@@ -236,6 +236,8 @@ GameObject:
   - component: {fileID: 754747705}
   - component: {fileID: 754747704}
   - component: {fileID: 754747706}
+  - component: {fileID: 754747708}
+  - component: {fileID: 754747707}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -320,4 +322,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c03e48fcd3b82640b0773c41eb53202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotateSpeed: 270
+  rotateSpeed: 270
+  fuelBoost: 10
+  maxSpeed: 30
+--- !u!50 &754747707
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754747703}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &754747708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754747703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f5fa39e991140afbf23e5aabb84d539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
