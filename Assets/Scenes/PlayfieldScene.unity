@@ -238,6 +238,7 @@ GameObject:
   - component: {fileID: 754747706}
   - component: {fileID: 754747708}
   - component: {fileID: 754747707}
+  - component: {fileID: 754747709}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -358,3 +359,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5fa39e991140afbf23e5aabb84d539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &754747709
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754747703}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e98d9327f02e4f49878d1632cac51b2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

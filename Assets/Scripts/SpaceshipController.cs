@@ -15,9 +15,11 @@ public class SpaceshipController : MonoBehaviour {
     [SerializeField] private float maxSpeed = 30.0f;
     
     private Rigidbody2D _rigidbody2D;
+    private Animator _animator;
     
     void Start() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         _rigidbody2D.drag = 0.2f;
     }
 
@@ -27,7 +29,9 @@ public class SpaceshipController : MonoBehaviour {
         transform.Rotate(0, 0, rot * rotateSpeed * Time.deltaTime);
 
         // Fuel burn
+        _animator.SetBool("fuelBurn", false);
         if (Input.GetAxisRaw("Vertical") > 0) {
+            _animator.SetBool("fuelBurn", true);
             Vector2 forward = transform.TransformDirection(Vector3.right);
             Vector2 velocity = _rigidbody2D.velocity + (forward.normalized * (fuelBoost * Time.deltaTime));
             _rigidbody2D.velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
