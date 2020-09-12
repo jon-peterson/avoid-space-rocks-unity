@@ -1,28 +1,39 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
+
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 // If something flies off to the right, it should appear on the left; off the top, appear on the bottom; etc.
 public class WraparoundMovement : MonoBehaviour {
+    private Vector3 _screenDimensions;
 
     public void Update() {
-
-        Vector3 spaceshipPosition = gameObject.transform.position;
-        Vector3 screenDimensions = Camera.current.ViewportToWorldPoint(new Vector3(1.0f, 1.0f, 0.0f));
-
-        float x = spaceshipPosition.x;
-        float y = spaceshipPosition.y;
-        if (spaceshipPosition.x > screenDimensions.x) {
-            x = -screenDimensions.x;
-        } else if (spaceshipPosition.x < -screenDimensions.x) {
-            x = screenDimensions.x;
+        // Calculate the screen dimensions only once; they never change in this game
+        if (_screenDimensions.x == 0) {
+            if (Camera.current != null) {
+                _screenDimensions = Camera.current.ViewportToWorldPoint(new Vector3(1.0f, 1.0f, 0.0f));
+            }
         }
-        if (spaceshipPosition.y > screenDimensions.y) {
-            y = -screenDimensions.y;
-        } else if (transform.position.y < -screenDimensions.y) {
-            y = screenDimensions.y;
-        }
+        if (_screenDimensions.x > 0) {
+            // Do the wraparound as needed
+            Vector3 objectPosition = gameObject.transform.position;
+            float x = objectPosition.x;
+            float y = objectPosition.y;
+            if (objectPosition.x > _screenDimensions.x) {
+                x = -_screenDimensions.x;
+            }
+            else if (objectPosition.x < -_screenDimensions.x) {
+                x = _screenDimensions.x;
+            }
 
-        gameObject.transform.position = new Vector3(x, y, spaceshipPosition.z);
+            if (objectPosition.y > _screenDimensions.y) {
+                y = -_screenDimensions.y;
+            }
+            else if (transform.position.y < -_screenDimensions.y) {
+                y = _screenDimensions.y;
+            }
+
+            gameObject.transform.position = new Vector3(x, y, objectPosition.z);
+        }
     }
 }
