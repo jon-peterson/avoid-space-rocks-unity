@@ -19,14 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Graphics update">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/indexLayout.xml" afterDir="false" />
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Project changes for rocks and stuff">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RockController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RockController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WraparoundMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WraparoundMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/spaceship.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/spaceship.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/spaceship.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/spaceship.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +34,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/RockController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/39/7fa0c42b/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/ProjectSettings/GraphicsSettings.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/WraparoundMovement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -85,10 +85,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8812">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="8812" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -107,7 +107,7 @@
       <workItem from="1599321368589" duration="5917000" />
       <workItem from="1599414714199" duration="8601000" />
       <workItem from="1599918870911" duration="2876000" />
-      <workItem from="1599921776234" duration="455000" />
+      <workItem from="1599921776234" duration="1277000" />
     </task>
     <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
       <created>1599321405334</created>
@@ -158,7 +158,35 @@
       <option name="project" value="LOCAL" />
       <updated>1599920979470</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Better wraparound logic">
+      <created>1599922272111</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1599922272112</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Rotate the rock">
+      <created>1599922315129</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1599922315129</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fix no event error">
+      <created>1599922570807</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1599922570807</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Project changes for rocks and stuff">
+      <created>1599922585997</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1599922585997</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -184,7 +212,11 @@
     <MESSAGE value="Implement fuel burning animation" />
     <MESSAGE value="Initial rock controller and movement" />
     <MESSAGE value="Graphics update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Graphics update" />
+    <MESSAGE value="Better wraparound logic" />
+    <MESSAGE value="Rotate the rock" />
+    <MESSAGE value="Fix no event error" />
+    <MESSAGE value="Project changes for rocks and stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project changes for rocks and stuff" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
@@ -267,10 +299,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599324013084" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1599424509378">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1599922278248">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599424509378" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1599922278248" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599422361199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

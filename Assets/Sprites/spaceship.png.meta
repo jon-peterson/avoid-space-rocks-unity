@@ -11,6 +11,15 @@ TextureImporter:
   - first:
       213: 7269162308753140182
     second: spaceship_fuel_1
+  - first:
+      213: 7691294901476699688
+    second: spaceship_idle
+  - first:
+      213: -1317505059173679881
+    second: spaceship_fuel_0
+  - first:
+      213: 7269162308753140182
+    second: spaceship_fuel_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,9 +109,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
-        width: 84
-        height: 48
+        y: 32
+        width: 28
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,9 +130,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
-        width: 84
-        height: 48
+        y: 16
+        width: 28
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +152,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 84
-        height: 48
+        width: 28
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
