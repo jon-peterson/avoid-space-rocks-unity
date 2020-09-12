@@ -19,11 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Project changes for rocks and stuff">
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Project layout">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/spaceship.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/spaceship.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/spaceship.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/spaceship.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RockController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RockController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +37,11 @@
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/RockController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/39/7fa0c42b/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/ProjectSettings/GraphicsSettings.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Sprites/spaceship.png.meta" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/WraparoundMovement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -46,8 +49,8 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Sprites/spaceship.piskel" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RockController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WraparoundMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RockController.cs" />
       </list>
     </option>
   </component>
@@ -107,7 +110,7 @@
       <workItem from="1599321368589" duration="5917000" />
       <workItem from="1599414714199" duration="8601000" />
       <workItem from="1599918870911" duration="2876000" />
-      <workItem from="1599921776234" duration="1277000" />
+      <workItem from="1599921776234" duration="2035000" />
     </task>
     <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
       <created>1599321405334</created>
@@ -186,7 +189,28 @@
       <option name="project" value="LOCAL" />
       <updated>1599922585997</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Project changes for new size animation">
+      <created>1599923139285</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1599923139285</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Track the Piskel iamges for now">
+      <created>1599923201851</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1599923201851</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Project layout">
+      <created>1599923213888</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1599923213888</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -216,7 +240,10 @@
     <MESSAGE value="Rotate the rock" />
     <MESSAGE value="Fix no event error" />
     <MESSAGE value="Project changes for rocks and stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project changes for rocks and stuff" />
+    <MESSAGE value="Project changes for new size animation" />
+    <MESSAGE value="Track the Piskel iamges for now" />
+    <MESSAGE value="Project layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project layout" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
@@ -227,38 +254,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599922195148" />
-    <state width="938" height="375" key="GridCell.Tab.0.bottom" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.0.bottom" timestamp="1599923055364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
-    <state width="938" height="375" key="GridCell.Tab.0.center" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599923055364" />
+    <state width="938" height="375" key="GridCell.Tab.0.center" timestamp="1599923055364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
-    <state width="938" height="375" key="GridCell.Tab.0.left" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599923055364" />
+    <state width="938" height="375" key="GridCell.Tab.0.left" timestamp="1599923055364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
-    <state width="938" height="375" key="GridCell.Tab.0.right" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599923055364" />
+    <state width="938" height="375" key="GridCell.Tab.0.right" timestamp="1599923055364">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
-    <state width="938" height="375" key="GridCell.Tab.1.bottom" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599923055364" />
+    <state width="938" height="375" key="GridCell.Tab.1.bottom" timestamp="1599923581082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
-    <state width="938" height="375" key="GridCell.Tab.1.center" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599923581082" />
+    <state width="938" height="375" key="GridCell.Tab.1.center" timestamp="1599923581082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
-    <state width="938" height="375" key="GridCell.Tab.1.left" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599923581082" />
+    <state width="938" height="375" key="GridCell.Tab.1.left" timestamp="1599923581082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
-    <state width="938" height="375" key="GridCell.Tab.1.right" timestamp="1599921749212">
+    <state width="938" height="375" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599923581082" />
+    <state width="938" height="375" key="GridCell.Tab.1.right" timestamp="1599923581082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="375" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599921749212" />
+    <state width="938" height="375" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599923581082" />
     <state width="938" height="375" key="GridCell.Tab.2.bottom" timestamp="1599921749212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
