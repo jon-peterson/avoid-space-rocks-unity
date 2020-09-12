@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -18,9 +17,10 @@ public class SpaceshipController : MonoBehaviour {
     private Animator _animator;
     
     void Start() {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.drag = 0.2f;
+        _rigidbody2D.gravityScale = 0.0f;
     }
 
     void Update() {
