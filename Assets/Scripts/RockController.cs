@@ -7,8 +7,8 @@ public class RockController : MonoBehaviour
 {
     [SerializeField] private float minRotatePerSecond = 45.0f;
     [SerializeField] private float maxRotatePerSecond = 360.0f;
-    [SerializeField] private float minSpeed = 2.0f;
-    [SerializeField] private float maxSpeed = 10.0f;
+    [SerializeField] private float minSpeed = 1.0f;
+    [SerializeField] private float maxSpeed = 5.0f;
 
     private Rigidbody2D _rigidbody2D;
     private float _rotationSpeed;
