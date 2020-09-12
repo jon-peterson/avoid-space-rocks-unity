@@ -19,11 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Project layout">
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Not so fast rocks">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RockController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RockController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,13 +37,16 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/RockController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/RockController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/39/7fa0c42b/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/ProjectSettings/GraphicsSettings.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/RockController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Sprites/spaceship.png.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/WraparoundMovement.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -50,7 +55,9 @@
         <option value="$PROJECT_DIR$/Assets/Sprites/spaceship.piskel" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WraparoundMovement.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PlayfieldController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RockController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
       </list>
     </option>
   </component>
@@ -110,7 +117,7 @@
       <workItem from="1599321368589" duration="5917000" />
       <workItem from="1599414714199" duration="8601000" />
       <workItem from="1599918870911" duration="2876000" />
-      <workItem from="1599921776234" duration="2035000" />
+      <workItem from="1599921776234" duration="4413000" />
     </task>
     <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
       <created>1599321405334</created>
@@ -210,7 +217,21 @@
       <option name="project" value="LOCAL" />
       <updated>1599923213888</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fix resolution so it looks appropriate for pixel-perfect">
+      <created>1599923835242</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1599923835242</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Not so fast rocks">
+      <created>1599923851372</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1599923851372</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -243,7 +264,9 @@
     <MESSAGE value="Project changes for new size animation" />
     <MESSAGE value="Track the Piskel iamges for now" />
     <MESSAGE value="Project layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project layout" />
+    <MESSAGE value="Fix resolution so it looks appropriate for pixel-perfect" />
+    <MESSAGE value="Not so fast rocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Not so fast rocks" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
