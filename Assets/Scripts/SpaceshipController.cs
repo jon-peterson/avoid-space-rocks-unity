@@ -1,4 +1,6 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
+
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -35,6 +37,11 @@ public class SpaceshipController : MonoBehaviour {
             Vector2 forward = transform.TransformDirection(Vector3.right);
             Vector2 velocity = _rigidbody2D.velocity + (forward.normalized * (fuelBoost * Time.deltaTime));
             _rigidbody2D.velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
+        }
+
+        if (Input.GetKeyDown("space")) {
+            BulletController bullet = Instantiate(Resources.Load("Prefabs/Bullet", typeof(BulletController))) as BulletController;
+            bullet.Initialize(this);
         }
     }
 }
