@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(WraparoundMovement))]    
 public class BulletController : MonoBehaviour {
 
+    [SerializeField] private float bulletSpeed = 5.0f;
+    
     private Rigidbody2D _rigidbody2D;
     
     // Start is called before the first frame update
@@ -13,8 +15,11 @@ public class BulletController : MonoBehaviour {
     }
 
     public void Initialize(SpaceshipController spaceship) {
+        // The velocity of the bullet is the same direction as the spaceship points only faster
         _rigidbody2D = GetComponent<Rigidbody2D>(); 
-        _rigidbody2D.velocity = spaceship.GetComponent<Rigidbody2D>().velocity;
+        Vector2 forward = spaceship.transform.TransformDirection(Vector3.right);
+        Vector2 boost = (forward.normalized * bulletSpeed);
+        _rigidbody2D.velocity = spaceship.GetComponent<Rigidbody2D>().velocity + boost;
         gameObject.transform.position = spaceship.transform.position;
     }
 
