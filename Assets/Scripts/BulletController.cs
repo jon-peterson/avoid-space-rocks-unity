@@ -1,4 +1,6 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
+
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -23,8 +25,10 @@ public class BulletController : MonoBehaviour {
         gameObject.transform.position = spaceship.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void OnTriggerEnter2D(Collider2D other) {
+        RockController rock = other.gameObject.GetComponent<RockController>();
+        if (rock != null) {
+            Destroy(rock.gameObject);
+        }
     }
 }
