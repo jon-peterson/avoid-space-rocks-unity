@@ -131,5 +131,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRotatePerSecond: 45
   maxRotatePerSecond: 180
-  minSpeed: 4
-  maxSpeed: 15
+  minSpeed: 0.5
+  maxSpeed: 3

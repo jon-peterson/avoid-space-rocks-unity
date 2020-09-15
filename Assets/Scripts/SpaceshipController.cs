@@ -13,7 +13,7 @@ public class SpaceshipController : MonoBehaviour {
     [SerializeField] private float fuelBoost = 10.0f;
 
     // The maximum speed that you can make your ship
-    [SerializeField] private float maxSpeed = 30.0f;
+    [SerializeField] private float maxSpeed = 20.0f;
     
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
