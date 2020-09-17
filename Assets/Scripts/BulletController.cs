@@ -8,12 +8,18 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
     [SerializeField] private float bulletSpeed = 5.0f;
-    
-    private Rigidbody2D _rigidbody2D;
+    private Rigidbody2D _rigidbody2D = null;
+    private LevelController _levelController = null;
     
     // Start is called before the first frame update
     void Start() {
-        Destroy(gameObject, 2.0f);        
+        Destroy(gameObject, 2.0f);
+        if (_levelController == null) {
+            GameObject lc = GameObject.FindWithTag("LevelController");
+            if (lc != null) {
+                _levelController = lc.GetComponent<LevelController>();
+            }
+        }
     }
 
     public void Initialize(SpaceshipController spaceship) {
@@ -28,7 +34,8 @@ public class BulletController : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other) {
         RockController rock = other.gameObject.GetComponent<RockController>();
         if (rock != null) {
-            Destroy(rock.gameObject);
+            _levelController.DestroyRock(rock);
+            Destroy(gameObject);
         }
     }
 }

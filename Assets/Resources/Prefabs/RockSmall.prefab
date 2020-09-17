@@ -99,8 +99,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -134,6 +134,7 @@ MonoBehaviour:
   maxRotatePerSecond: 360
   minSpeed: 1
   maxSpeed: 5
+  size: 2
 --- !u!58 &4058925083976245169
 CircleCollider2D:
   m_ObjectHideFlags: 0

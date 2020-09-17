@@ -5,10 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(WraparoundMovement))]    
 public class RockController : MonoBehaviour
 {
+    enum Size {
+        Large, Medium, Small
+    }
     [SerializeField] private float minRotatePerSecond = 45.0f;
     [SerializeField] private float maxRotatePerSecond = 360.0f;
     [SerializeField] private float minSpeed = 1.0f;
     [SerializeField] private float maxSpeed = 5.0f;
+    [SerializeField] private Size size = Size.Large;
 
     private Rigidbody2D _rigidbody2D;
     private float _rotationSpeed;
@@ -18,8 +22,6 @@ public class RockController : MonoBehaviour
     {
         // Rocks never slow down
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _rigidbody2D.drag = 0.0f;
-        _rigidbody2D.gravityScale = 0.0f;
         // Point the rock in a random direction and set it moving at a random speed
         float degree = Random.Range(0.0f, 360.0f);
         Vector2 direction = new Vector2(Mathf.Cos(degree * Mathf.Deg2Rad), Mathf.Sin(degree * Mathf.Deg2Rad));

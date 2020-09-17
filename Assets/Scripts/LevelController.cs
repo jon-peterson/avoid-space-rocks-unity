@@ -5,6 +5,7 @@ public class LevelController : MonoBehaviour {
     
     [SerializeField] private Camera _camera;
     private Vector3 _screenDimensions;
+    private int _rocks;
     
     void Start() {
         // Permanently store the dimensions of the screen in world coordinates
@@ -13,7 +14,8 @@ public class LevelController : MonoBehaviour {
         GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
         spaceship.transform.position = new Vector3(0.0f, 0.0f);
         // Create a bunch of large rocks to start the level
-        for (int i = 0; i < 5; i++) {
+        _rocks = 5;
+        for (int i = 0; i < _rocks; i++) {
             GameObject rock = Instantiate(Resources.Load("Prefabs/RockBig", typeof(GameObject))) as GameObject;
             if (Random.Range(0, 1) == 0) {
                 // Along the right side
@@ -27,6 +29,9 @@ public class LevelController : MonoBehaviour {
             }
         }
     }
-    
-    
+
+    public void DestroyRock(RockController rock) {
+        Destroy(rock.gameObject);
+        _rocks--;
+    }
 }        
