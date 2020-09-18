@@ -1,6 +1,4 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
-
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -21,12 +19,10 @@ public class SpaceshipController : MonoBehaviour {
     void Start() {
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _rigidbody2D.drag = 0.2f;
-        _rigidbody2D.gravityScale = 0.0f;
     }
 
     void Update() {
-        // Change rotation around the Z axis
+        // Rotate around the Z axis
         float rot = -Input.GetAxisRaw("Horizontal");
         transform.Rotate(0, 0, rot * rotateSpeed * Time.deltaTime);
 
@@ -39,6 +35,7 @@ public class SpaceshipController : MonoBehaviour {
             _rigidbody2D.velocity = Vector2.ClampMagnitude(velocity, maxSpeed);
         }
 
+        // Fire
         if (Input.GetKeyDown("space")) {
             BulletController bullet = Instantiate(Resources.Load("Prefabs/Bullet", typeof(BulletController))) as BulletController;
             bullet.Initialize(this);

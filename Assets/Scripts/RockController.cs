@@ -1,13 +1,14 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using UnityEngine;
 
+public enum Size {
+    Large, Medium, Small, Tiny
+}
+
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(WraparoundMovement))]    
 public class RockController : MonoBehaviour
 {
-    enum Size {
-        Large, Medium, Small
-    }
     [SerializeField] private float minRotatePerSecond = 45.0f;
     [SerializeField] private float maxRotatePerSecond = 360.0f;
     [SerializeField] private float minSpeed = 1.0f;
@@ -16,6 +17,8 @@ public class RockController : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private float _rotationSpeed;
+
+    public Size Size => size;
 
     // Start is called before the first frame update
     void Start()

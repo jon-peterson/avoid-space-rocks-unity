@@ -133,7 +133,7 @@ MonoBehaviour:
   minRotatePerSecond: 10
   maxRotatePerSecond: 90
   minSpeed: 0.2
-  maxSpeed: 3
+  maxSpeed: 2
   size: 0
 --- !u!58 &-8227690784690246321
 CircleCollider2D:
