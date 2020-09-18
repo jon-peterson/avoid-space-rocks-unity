@@ -41,4 +41,12 @@ public class SpaceshipController : MonoBehaviour {
             bullet.Initialize(this);
         }
     }
+    
+    // Blow up if I get hit by a rock
+    public void OnTriggerEnter2D(Collider2D other) {
+        RockController rock = other.gameObject.GetComponent<RockController>();
+        if (rock != null) {
+            Destroy(gameObject);
+        }
+    }
 }

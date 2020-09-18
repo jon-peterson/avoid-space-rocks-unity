@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7429000933132889659}
   - component: {fileID: 7429000933132889660}
   - component: {fileID: 7429000933132889658}
+  - component: {fileID: 6194199168047378420}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -98,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c03e48fcd3b82640b0773c41eb53202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 180
-  fuelBoost: 5
+  rotateSpeed: 270
+  fuelBoost: 8
   maxSpeed: 15
 --- !u!114 &7429000933132889659
 MonoBehaviour:
@@ -153,3 +154,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &6194199168047378420
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7429000933132889648}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.28, y: 0.16}
+    newSize: {x: 0.28, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.01891814, y: 0.055153538}
+      - {x: -0.074620955, y: 0.08338054}
+      - {x: -0.13, y: 0.08}
+      - {x: -0.062989816, y: -0.0015058499}
+      - {x: -0.13, y: -0.08}
+      - {x: -0.086242884, y: -0.08648689}
+      - {x: 0.011505816, y: -0.05590646}
+      - {x: 0.14225873, y: -0.013435693}
+      - {x: 0.14752924, y: 0.011176899}
+      - {x: 0.09548247, y: 0.034612603}
