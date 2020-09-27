@@ -1,6 +1,4 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
-
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -14,12 +12,7 @@ public class BulletController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Destroy(gameObject, 2.0f);
-        if (_levelController == null) {
-            GameObject lc = GameObject.FindWithTag("LevelController");
-            if (lc != null) {
-                _levelController = lc.GetComponent<LevelController>();
-            }
-        }
+        _levelController = Util.GetLevelController();
     }
 
     public void Initialize(SpaceshipController spaceship) {

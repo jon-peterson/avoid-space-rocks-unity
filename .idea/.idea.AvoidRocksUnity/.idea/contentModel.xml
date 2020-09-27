@@ -9,8 +9,10 @@
         <e p="Scripts" t="Include">
           <e p="BulletController.cs" t="Include" />
           <e p="LevelController.cs" t="Include" />
+          <e p="RandomDirection.cs" t="Include" />
           <e p="RockController.cs" t="Include" />
           <e p="SpaceshipController.cs" t="Include" />
+          <e p="Util.cs" t="Include" />
           <e p="WraparoundMovement.cs" t="Include" />
         </e>
       </e>

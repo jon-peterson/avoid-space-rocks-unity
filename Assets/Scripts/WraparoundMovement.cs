@@ -1,5 +1,4 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
-
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 

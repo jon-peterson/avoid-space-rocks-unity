@@ -42,6 +42,9 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    /**
+     * Destroy the passed-in rock, spawning new smaller ones as needed. Increases score.
+     */
     public void DestroyRock(RockController rock) {
         if (rock.Size == Size.Large) {
             _score += 5;
@@ -56,6 +59,21 @@ public class LevelController : MonoBehaviour {
         Destroy(rock.gameObject);
         _scoreText.text = _score.ToString("#,##0");
         _rocks--;
+    }
+
+    /**
+     * Destroys the passed-in spaceship, decreasing the number of lives. 
+     */
+    public void DestroySpaceship(SpaceshipController spaceshipController) {
+        Destroy(spaceshipController.gameObject);
+        // Spawn four pieces of the spaceship flying off in different directions
+        for (int i = 0; i < 4; i++) {
+            String part = i % 2 == 1 ? "SpaceshipPartLarge" : "SpaceshipPartSmall";
+            GameObject piece = Instantiate(Resources.Load("Prefabs/" + part, typeof(GameObject))) as GameObject;
+            piece.transform.position = spaceshipController.transform.position;
+            Destroy(piece, Random.Range(1.5f, 4.0f));
+        }
+        _lives--;
     }
 
     private void SpawnChildRocks(RockController rock, String prefab, int count) {

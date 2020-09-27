@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3522736614699828620}
   - component: {fileID: 3522736614699828619}
   - component: {fileID: 6167630074115328405}
+  - component: {fileID: 3161351253344137299}
   m_Layer: 0
   m_Name: RockMedium
   m_TagString: Untagged
@@ -130,10 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9266d3eee8466d40beffd037db8d333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRotatePerSecond: 45
-  maxRotatePerSecond: 180
-  minSpeed: 0.5
-  maxSpeed: 3
   size: 1
 --- !u!58 &6167630074115328405
 CircleCollider2D:
@@ -151,3 +148,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!114 &3161351253344137299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3522736614699828618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3787c893a099d4c49b8e6dedd58a5525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotatePerSecond: 45
+  maxRotatePerSecond: 180
+  minSpeed: 0.5
+  maxSpeed: 3

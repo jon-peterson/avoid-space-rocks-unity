@@ -15,10 +15,12 @@ public class SpaceshipController : MonoBehaviour {
     
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
-    
+    private LevelController _levelController = null;
+
     void Start() {
         _animator = GetComponent<Animator>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _levelController = Util.GetLevelController();
     }
 
     void Update() {
@@ -46,7 +48,7 @@ public class SpaceshipController : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D other) {
         RockController rock = other.gameObject.GetComponent<RockController>();
         if (rock != null) {
-            Destroy(gameObject);
+            _levelController.DestroySpaceship(this);
         }
     }
 }

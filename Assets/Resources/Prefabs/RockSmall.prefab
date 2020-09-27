@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1454808940831441322}
   - component: {fileID: 1454808940831441323}
   - component: {fileID: 4058925083976245169}
+  - component: {fileID: 4462136839648088860}
   m_Layer: 0
   m_Name: RockSmall
   m_TagString: Untagged
@@ -130,10 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9266d3eee8466d40beffd037db8d333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRotatePerSecond: 90
-  maxRotatePerSecond: 360
-  minSpeed: 1
-  maxSpeed: 5
   size: 2
 --- !u!58 &4058925083976245169
 CircleCollider2D:
@@ -151,3 +148,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &4462136839648088860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454808940831441326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3787c893a099d4c49b8e6dedd58a5525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minRotatePerSecond: 90
+  maxRotatePerSecond: 360
+  minSpeed: 1
+  maxSpeed: 5
