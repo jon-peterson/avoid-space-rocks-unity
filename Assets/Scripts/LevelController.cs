@@ -1,5 +1,6 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -23,11 +24,10 @@ public class LevelController : MonoBehaviour {
         _scoreText.text = "0";
         _livesText = _hudCanvas.transform.Find("LivesText").gameObject.GetComponent<Text>();
         _livesText.text = "Ships: 3";
-        // Start the spaceship right in the middle
-        GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
-        spaceship.transform.position = new Vector3(0.0f, 0.0f);
         _score = 0;
         _lives = 3;
+        // Start the spaceship right in the middle
+        StartCoroutine(SpawnSpaceship());
         // Create a bunch of large rocks to start the level
         _rocks = 3;
         for (int i = 0; i < _rocks; i++) {
@@ -51,13 +51,13 @@ public class LevelController : MonoBehaviour {
     public void DestroyRock(RockController rock) {
         if (rock.Size == Size.Large) {
             _score += 5;
-            SpawnChildRocks(rock, "Prefabs/RockMedium", 2);
+            SpawnChildRocks("Prefabs/RockMedium", 2, rock.transform.position);
         } else if (rock.Size == Size.Medium) {
             _score += 10;
-            SpawnChildRocks(rock, "Prefabs/RockSmall", 3);
+            SpawnChildRocks("Prefabs/RockSmall", 3, rock.transform.position);
         } else if (rock.Size == Size.Small) {
             _score += 20;
-            SpawnChildRocks(rock, "Prefabs/RockTiny", 3);
+            SpawnChildRocks("Prefabs/RockTiny", 3, rock.transform.position);
         }
         Destroy(rock.gameObject);
         _scoreText.text = _score.ToString("#,##0");
@@ -78,13 +78,29 @@ public class LevelController : MonoBehaviour {
         }
         _lives--;
         _livesText.text = "Ships: " + _lives;
+        if (_lives > 0) {
+            StartCoroutine(SpawnSpaceship());
+        }
     }
 
-    private void SpawnChildRocks(RockController rock, String prefab, int count) {
+    /**
+     * Spawns a number of rock types at a specific position
+     */
+    private void SpawnChildRocks(String prefab, int count, Vector3 pos) {
         for (int i = 0; i < count; i++) {
             GameObject kid = Instantiate(Resources.Load(prefab, typeof(GameObject))) as GameObject;
-            kid.transform.position = rock.transform.position;
+            kid.transform.position = pos;
             _rocks++;
         }
     }
+    
+    /**
+     * Creates a new spaceship in the middle of the screen
+     */
+    private IEnumerator SpawnSpaceship() {
+        yield return new WaitForSeconds(3.0f);
+        GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
+        spaceship.transform.position = new Vector3(0.0f, 0.0f);
+    }
+
 }        

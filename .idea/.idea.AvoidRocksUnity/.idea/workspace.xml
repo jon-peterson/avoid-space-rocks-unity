@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Behavior for random direction; spaceship parts">
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Missed metafiles for sprints and prefabs">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,8 +43,10 @@
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/RockController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/RockMedium.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/RockSmall.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/0f/69c624f8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
@@ -128,7 +129,7 @@
       <workItem from="1599921776234" duration="64708000" />
       <workItem from="1600390876772" duration="4236000" />
       <workItem from="1600695378488" duration="57000" />
-      <workItem from="1600695779737" duration="5841000" />
+      <workItem from="1600695779737" duration="6253000" />
     </task>
     <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
       <created>1599321405334</created>
@@ -319,7 +320,21 @@
       <option name="project" value="LOCAL" />
       <updated>1601234537995</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="HUD for number of ships left">
+      <created>1601235048617</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1601235048617</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Missed metafiles for sprints and prefabs">
+      <created>1601235065498</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1601235065498</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -338,8 +353,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Basic spaceship rotate; pixel-perfect camera" />
-    <MESSAGE value="Add wraparound movement behavior; tweak spaceship movement" />
     <MESSAGE value="Implement fuel burning animation" />
     <MESSAGE value="Initial rock controller and movement" />
     <MESSAGE value="Graphics update" />
@@ -363,7 +376,9 @@
     <MESSAGE value="Spaceship can blow up" />
     <MESSAGE value="Add score widget in the upper left" />
     <MESSAGE value="Behavior for random direction; spaceship parts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Behavior for random direction; spaceship parts" />
+    <MESSAGE value="HUD for number of ships left" />
+    <MESSAGE value="Missed metafiles for sprints and prefabs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Missed metafiles for sprints and prefabs" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
