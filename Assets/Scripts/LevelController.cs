@@ -8,6 +8,7 @@ public class LevelController : MonoBehaviour {
     
     private Canvas _hudCanvas;
     private Text _scoreText;
+    private Text _livesText;
     private Vector3 _screenDimensions;
     private int _rocks;
     private int _lives;
@@ -20,6 +21,8 @@ public class LevelController : MonoBehaviour {
         _hudCanvas = GameObject.FindGameObjectWithTag("HUDCanvas").GetComponent<Canvas>();
         _scoreText = _hudCanvas.transform.Find("ScoreText").gameObject.GetComponent<Text>();
         _scoreText.text = "0";
+        _livesText = _hudCanvas.transform.Find("LivesText").gameObject.GetComponent<Text>();
+        _livesText.text = "Ships: 3";
         // Start the spaceship right in the middle
         GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
         spaceship.transform.position = new Vector3(0.0f, 0.0f);
@@ -74,6 +77,7 @@ public class LevelController : MonoBehaviour {
             Destroy(piece, Random.Range(1.5f, 4.0f));
         }
         _lives--;
+        _livesText.text = "Ships: " + _lives;
     }
 
     private void SpawnChildRocks(RockController rock, String prefab, int count) {
