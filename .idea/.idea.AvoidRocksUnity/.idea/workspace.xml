@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Add multiple lives">
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Tiny explosion">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Spaceship.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Spaceship.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +37,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/51/13b7f1d8/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/8d/a10718aa/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -53,8 +52,8 @@
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockMedium.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockBig.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockSmall.prefab" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
       </list>
     </option>
   </component>
@@ -118,7 +117,7 @@
       <workItem from="1600390876772" duration="4236000" />
       <workItem from="1600695378488" duration="57000" />
       <workItem from="1600695779737" duration="7559000" />
-      <workItem from="1602028275721" duration="2232000" />
+      <workItem from="1602028275721" duration="2786000" />
     </task>
     <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
       <created>1599321405334</created>
@@ -330,7 +329,21 @@
       <option name="project" value="LOCAL" />
       <updated>1601235458267</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Basic sound effects for explosions and stuff">
+      <created>1602031970862</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1602031970862</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Tiny explosion">
+      <created>1602032194178</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1602032194178</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -349,8 +362,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Initial rock controller and movement" />
-    <MESSAGE value="Graphics update" />
     <MESSAGE value="Better wraparound logic" />
     <MESSAGE value="Rotate the rock" />
     <MESSAGE value="Fix no event error" />
@@ -374,7 +385,9 @@
     <MESSAGE value="HUD for number of ships left" />
     <MESSAGE value="Missed metafiles for sprints and prefabs" />
     <MESSAGE value="Add multiple lives" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add multiple lives" />
+    <MESSAGE value="Basic sound effects for explosions and stuff" />
+    <MESSAGE value="Tiny explosion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tiny explosion" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
@@ -457,10 +470,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599324013084" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1601234539716">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602031972696">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1601234539716" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602031972696" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599422361199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
