@@ -65,10 +65,10 @@ public class LevelController : MonoBehaviour {
         } else if (rock.Size == Size.Small) {
             _score += 20;
             PlaySound("explosion_small");
-            SpawnChildRocks("Prefabs/RockTiny", 3, rock.transform.position);
+            SpawnChildRocks("Prefabs/RockTiny", 2, rock.transform.position);
         } else {
             _score += 30;
-            PlaySound("explosion_small");
+            PlaySound("explosion_tiny");
         }
         Destroy(rock.gameObject);
         _scoreText.text = _score.ToString("#,##0");
