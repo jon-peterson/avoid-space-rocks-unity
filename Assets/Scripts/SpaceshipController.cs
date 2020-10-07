@@ -39,6 +39,7 @@ public class SpaceshipController : MonoBehaviour {
 
         // Fire
         if (Input.GetKeyDown("space")) {
+            _levelController.PlaySound("fire");
             BulletController bullet = Instantiate(Resources.Load("Prefabs/Bullet", typeof(BulletController))) as BulletController;
             bullet.Initialize(this);
         }

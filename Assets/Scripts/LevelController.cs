@@ -14,6 +14,11 @@ public class LevelController : MonoBehaviour {
     private int _rocks;
     private int _lives;
     private int _score;
+    private AudioSource _audioSource;
+
+    void Awake() {
+        _audioSource = gameObject.AddComponent<AudioSource>();
+    }
     
     void Start() {
         // Permanently store the dimensions of the screen in world coordinates
@@ -51,13 +56,19 @@ public class LevelController : MonoBehaviour {
     public void DestroyRock(RockController rock) {
         if (rock.Size == Size.Large) {
             _score += 5;
+            PlaySound("explosion_large");
             SpawnChildRocks("Prefabs/RockMedium", 2, rock.transform.position);
         } else if (rock.Size == Size.Medium) {
             _score += 10;
+            PlaySound("explosion_medium");
             SpawnChildRocks("Prefabs/RockSmall", 3, rock.transform.position);
         } else if (rock.Size == Size.Small) {
             _score += 20;
+            PlaySound("explosion_small");
             SpawnChildRocks("Prefabs/RockTiny", 3, rock.transform.position);
+        } else {
+            _score += 30;
+            PlaySound("explosion_small");
         }
         Destroy(rock.gameObject);
         _scoreText.text = _score.ToString("#,##0");
@@ -65,9 +76,17 @@ public class LevelController : MonoBehaviour {
     }
 
     /**
+     * Plays the specified sound file.
+     */
+    public void PlaySound(String sound) {
+        _audioSource.PlayOneShot(Resources.Load<AudioClip>("Audio/" + sound));
+    }
+    
+    /**
      * Destroys the passed-in spaceship, decreasing the number of lives. 
      */
     public void DestroySpaceship(SpaceshipController spaceshipController) {
+        PlaySound("explosion_ship");
         Destroy(spaceshipController.gameObject);
         // Spawn four pieces of the spaceship flying off in different directions
         for (int i = 0; i < 4; i++) {

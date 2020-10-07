@@ -19,9 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Missed metafiles for sprints and prefabs">
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Add multiple lives">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Spaceship.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Spaceship.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,24 +34,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/RockTiny.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/39/7fa0c42b/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/RockBig.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/8d/a10718aa/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/ProjectSettings/TagManager.asset" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/RockController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/RockMedium.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/RockSmall.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/0f/69c624f8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scenes/PlayfieldScene.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/51/13b7f1d8/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/8d/a10718aa/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -58,7 +46,6 @@
         <option value="$PROJECT_DIR$/Assets/Sprites/spaceship.piskel" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PlayfieldController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BulletController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WraparoundMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RockController.cs" />
@@ -66,6 +53,7 @@
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockMedium.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockBig.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockSmall.prefab" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
       </list>
     </option>
@@ -104,10 +92,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1320">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16004">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="1320" />
+      <option name="pid" value="16004" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -129,7 +117,8 @@
       <workItem from="1599921776234" duration="64708000" />
       <workItem from="1600390876772" duration="4236000" />
       <workItem from="1600695378488" duration="57000" />
-      <workItem from="1600695779737" duration="6253000" />
+      <workItem from="1600695779737" duration="7559000" />
+      <workItem from="1602028275721" duration="2232000" />
     </task>
     <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
       <created>1599321405334</created>
@@ -334,7 +323,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601235065498</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Add multiple lives">
+      <created>1601235458267</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1601235458267</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -353,7 +349,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Implement fuel burning animation" />
     <MESSAGE value="Initial rock controller and movement" />
     <MESSAGE value="Graphics update" />
     <MESSAGE value="Better wraparound logic" />
@@ -378,7 +373,8 @@
     <MESSAGE value="Behavior for random direction; spaceship parts" />
     <MESSAGE value="HUD for number of ships left" />
     <MESSAGE value="Missed metafiles for sprints and prefabs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Missed metafiles for sprints and prefabs" />
+    <MESSAGE value="Add multiple lives" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add multiple lives" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
@@ -389,38 +385,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599922195148" />
-    <state width="939" height="325" key="GridCell.Tab.0.bottom" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.0.bottom" timestamp="1602028559801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.0.center" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
+    <state width="938" height="325" key="GridCell.Tab.0.center" timestamp="1602028559801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.0.left" timestamp="1601234085762">
+    <state width="938" height="325" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
+    <state width="938" height="325" key="GridCell.Tab.0.left" timestamp="1602028559801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085762" />
-    <state width="939" height="325" key="GridCell.Tab.0.right" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
+    <state width="938" height="325" key="GridCell.Tab.0.right" timestamp="1602028559801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.1.bottom" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
+    <state width="938" height="325" key="GridCell.Tab.1.bottom" timestamp="1602028574988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.1.center" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574988" />
+    <state width="938" height="325" key="GridCell.Tab.1.center" timestamp="1602028574987">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.1.left" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574987" />
+    <state width="938" height="325" key="GridCell.Tab.1.left" timestamp="1602028574987">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.1.right" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574987" />
+    <state width="938" height="325" key="GridCell.Tab.1.right" timestamp="1602028574987">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
+    <state width="938" height="325" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574987" />
     <state width="939" height="325" key="GridCell.Tab.2.bottom" timestamp="1601234085763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -473,10 +469,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="254" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600696049223" />
-    <state x="637" y="119" width="646" height="801" key="find.popup" timestamp="1600176869542">
+    <state x="637" y="119" width="646" height="801" key="find.popup" timestamp="1602028842486">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="637" y="119" width="646" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1600176869542" />
+    <state x="637" y="119" width="646" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602028842486" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601233037092">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
