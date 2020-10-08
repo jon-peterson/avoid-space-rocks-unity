@@ -1,6 +1,4 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
-
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
