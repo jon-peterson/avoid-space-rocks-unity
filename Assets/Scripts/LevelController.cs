@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -10,6 +11,7 @@ public class LevelController : MonoBehaviour {
     private Canvas _hudCanvas;
     private Text _scoreText;
     private Text _livesText;
+    private GameObject _gameOver;
     private Vector3 _screenDimensions;
     private int _rocks;
     private int _lives;
@@ -29,6 +31,8 @@ public class LevelController : MonoBehaviour {
         _scoreText.text = "0";
         _livesText = _hudCanvas.transform.Find("LivesText").gameObject.GetComponent<Text>();
         _livesText.text = "Ships: 3";
+        _gameOver = _hudCanvas.transform.Find("GameOverText").gameObject;
+        _gameOver.SetActive(false);
         _score = 0;
         _lives = 3;
         // Start the spaceship right in the middle
@@ -99,6 +103,8 @@ public class LevelController : MonoBehaviour {
         _livesText.text = "Ships: " + _lives;
         if (_lives > 0) {
             StartCoroutine(SpawnSpaceship());
+        } else {
+            StartCoroutine(GameOver());
         }
     }
 
@@ -120,6 +126,18 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
         spaceship.transform.position = new Vector3(0.0f, 0.0f);
+    }
+
+    /**
+     * Displays the game over text, then transitions back to attract mode
+     */
+    private IEnumerator GameOver() {
+        yield return new WaitForSeconds(3.0f);
+        _gameOver.SetActive(true);
+        yield return new WaitForSeconds(4.0f);
+        _gameOver.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene("AttractModeScene", LoadSceneMode.Single);
     }
 
 }        

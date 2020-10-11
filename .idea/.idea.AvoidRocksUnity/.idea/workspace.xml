@@ -19,11 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Fuel burning sound">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" afterDir="false" />
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Add attract mode screen to game">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PlayfieldScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,10 +37,8 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/39/7fa0c42b/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/0f/69c624f8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/51/13b7f1d8/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/8d/a10718aa/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -55,9 +53,9 @@
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockMedium.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockBig.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockSmall.prefab" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AttractModeController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
       </list>
     </option>
   </component>
@@ -95,10 +93,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="16004">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="1260">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="16004" />
+      <option name="pid" value="1260" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -121,7 +119,8 @@
       <workItem from="1600390876772" duration="4236000" />
       <workItem from="1600695378488" duration="57000" />
       <workItem from="1600695779737" duration="7559000" />
-      <workItem from="1602028275721" duration="4267000" />
+      <workItem from="1602028275721" duration="4494000" />
+      <workItem from="1602436229281" duration="817000" />
     </task>
     <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
       <created>1599321405334</created>
@@ -354,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1602032474566</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Add attract mode screen to game">
+      <created>1602164606283</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1602164606283</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -373,7 +379,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Rotate the rock" />
     <MESSAGE value="Fix no event error" />
     <MESSAGE value="Project changes for rocks and stuff" />
     <MESSAGE value="Project changes for new size animation" />
@@ -398,7 +403,8 @@
     <MESSAGE value="Basic sound effects for explosions and stuff" />
     <MESSAGE value="Tiny explosion" />
     <MESSAGE value="Fuel burning sound" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fuel burning sound" />
+    <MESSAGE value="Add attract mode screen to game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add attract mode screen to game" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
@@ -409,70 +415,70 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599922195148" />
-    <state width="938" height="325" key="GridCell.Tab.0.bottom" timestamp="1602028559801">
+    <state width="938" height="325" key="GridCell.Tab.0.bottom" timestamp="1602436703832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
-    <state width="938" height="325" key="GridCell.Tab.0.center" timestamp="1602028559801">
+    <state width="938" height="325" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602436703832" />
+    <state width="938" height="325" key="GridCell.Tab.0.center" timestamp="1602436703832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
-    <state width="938" height="325" key="GridCell.Tab.0.left" timestamp="1602028559801">
+    <state width="938" height="325" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602436703832" />
+    <state width="938" height="325" key="GridCell.Tab.0.left" timestamp="1602436703831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
-    <state width="938" height="325" key="GridCell.Tab.0.right" timestamp="1602028559801">
+    <state width="938" height="325" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602436703831" />
+    <state width="938" height="325" key="GridCell.Tab.0.right" timestamp="1602436703832">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602028559801" />
-    <state width="938" height="325" key="GridCell.Tab.1.bottom" timestamp="1602028574988">
+    <state width="938" height="325" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602436703832" />
+    <state width="938" height="325" key="GridCell.Tab.1.bottom" timestamp="1602436730771">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574988" />
-    <state width="938" height="325" key="GridCell.Tab.1.center" timestamp="1602028574987">
+    <state width="938" height="325" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602436730771" />
+    <state width="938" height="325" key="GridCell.Tab.1.center" timestamp="1602436730770">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574987" />
-    <state width="938" height="325" key="GridCell.Tab.1.left" timestamp="1602028574987">
+    <state width="938" height="325" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602436730770" />
+    <state width="938" height="325" key="GridCell.Tab.1.left" timestamp="1602436730770">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574987" />
-    <state width="938" height="325" key="GridCell.Tab.1.right" timestamp="1602028574987">
+    <state width="938" height="325" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602436730770" />
+    <state width="938" height="325" key="GridCell.Tab.1.right" timestamp="1602436730771">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="938" height="325" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602028574987" />
-    <state width="939" height="325" key="GridCell.Tab.2.bottom" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602436730771" />
+    <state width="938" height="325" key="GridCell.Tab.2.bottom" timestamp="1602164673563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.2.center" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673563" />
+    <state width="938" height="325" key="GridCell.Tab.2.center" timestamp="1602164673562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.2.left" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673562" />
+    <state width="938" height="325" key="GridCell.Tab.2.left" timestamp="1602164673562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.2.right" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673562" />
+    <state width="938" height="325" key="GridCell.Tab.2.right" timestamp="1602164673562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.3.bottom" timestamp="1601234085764">
+    <state width="938" height="325" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673562" />
+    <state width="938" height="325" key="GridCell.Tab.3.bottom" timestamp="1602164673563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085764" />
-    <state width="939" height="325" key="GridCell.Tab.3.center" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673563" />
+    <state width="938" height="325" key="GridCell.Tab.3.center" timestamp="1602164673563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.3.left" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673563" />
+    <state width="938" height="325" key="GridCell.Tab.3.left" timestamp="1602164673563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
-    <state width="939" height="325" key="GridCell.Tab.3.right" timestamp="1601234085763">
+    <state width="938" height="325" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673563" />
+    <state width="938" height="325" key="GridCell.Tab.3.right" timestamp="1602164673563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="939" height="325" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1601234085763" />
+    <state width="938" height="325" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1602164673563" />
     <state x="744" y="230" key="RollbackChangesDialog" timestamp="1599922158351">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -481,10 +487,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599324013084" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602032475813">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602164607689">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602032475813" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602164607689" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599422361199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
