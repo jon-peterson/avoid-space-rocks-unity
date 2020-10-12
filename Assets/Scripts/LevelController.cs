@@ -11,11 +11,12 @@ public class LevelController : MonoBehaviour {
     private Canvas _hudCanvas;
     private Text _scoreText;
     private Text _livesText;
-    private GameObject _gameOver;
+    private GameObject _centerTextObject;
     private Vector3 _screenDimensions;
     private int _rocks;
     private int _lives;
     private int _score;
+    private int _level;
     private AudioSource _audioSource;
 
     void Awake() {
@@ -31,27 +32,14 @@ public class LevelController : MonoBehaviour {
         _scoreText.text = "0";
         _livesText = _hudCanvas.transform.Find("LivesText").gameObject.GetComponent<Text>();
         _livesText.text = "Ships: 3";
-        _gameOver = _hudCanvas.transform.Find("GameOverText").gameObject;
-        _gameOver.SetActive(false);
+        _centerTextObject = _hudCanvas.transform.Find("CenterText").gameObject;
+        _centerTextObject.SetActive(false);
         _score = 0;
         _lives = 3;
+        _level = 1;
         // Start the spaceship right in the middle
-        StartCoroutine(SpawnSpaceship());
-        // Create a bunch of large rocks to start the level
-        _rocks = 3;
-        for (int i = 0; i < _rocks; i++) {
-            GameObject rock = Instantiate(Resources.Load("Prefabs/RockBig", typeof(GameObject))) as GameObject;
-            if (Random.Range(0, 1) == 0) {
-                // Along the right side
-                rock.transform.position = new Vector3(_screenDimensions.x,
-                    Random.Range(_screenDimensions.y, _screenDimensions.y));
-            }
-            else {
-                // Along the bottom             
-                rock.transform.position = new Vector3(Random.Range(_screenDimensions.x, _screenDimensions.x),
-                    _screenDimensions.y);
-            }
-        }
+        StartCoroutine(StartLevel());
+        StartCoroutine(SpawnSpaceship(5.0f));
     }
 
     /**
@@ -72,7 +60,7 @@ public class LevelController : MonoBehaviour {
             SpawnChildRocks("Prefabs/RockTiny", 2, rock.transform.position);
         } else {
             _score += 30;
-            PlaySound("explosion_tiny");
+            PlaySound("explosion_small");
         }
         Destroy(rock.gameObject);
         _scoreText.text = _score.ToString("#,##0");
@@ -102,7 +90,7 @@ public class LevelController : MonoBehaviour {
         _lives--;
         _livesText.text = "Ships: " + _lives;
         if (_lives > 0) {
-            StartCoroutine(SpawnSpaceship());
+            StartCoroutine(SpawnSpaceship(3.0f));
         } else {
             StartCoroutine(GameOver());
         }
@@ -122,8 +110,8 @@ public class LevelController : MonoBehaviour {
     /**
      * Creates a new spaceship in the middle of the screen
      */
-    private IEnumerator SpawnSpaceship() {
-        yield return new WaitForSeconds(3.0f);
+    private IEnumerator SpawnSpaceship(float delay) {
+        yield return new WaitForSeconds(delay);
         GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
         spaceship.transform.position = new Vector3(0.0f, 0.0f);
     }
@@ -133,11 +121,44 @@ public class LevelController : MonoBehaviour {
      */
     private IEnumerator GameOver() {
         yield return new WaitForSeconds(3.0f);
-        _gameOver.SetActive(true);
+        showCenterText("Game Over");
         yield return new WaitForSeconds(4.0f);
-        _gameOver.SetActive(false);
+        hideCenterText();
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("AttractModeScene", LoadSceneMode.Single);
     }
 
+    private void showCenterText(String c) {
+        _centerTextObject.GetComponent<Text>().text = c;
+        _centerTextObject.SetActive(true);
+    }
+
+    private void hideCenterText() {
+        _centerTextObject.SetActive(false);
+    }
+
+    /**
+     * Start new level L by spawning the correct space rocks
+     */
+    private IEnumerator StartLevel() {
+        yield return new WaitForSeconds(1.0f);
+        showCenterText("Level " + _level);
+        yield return new WaitForSeconds(3.0f);
+        hideCenterText();
+        yield return new WaitForSeconds(1.0f);
+        _rocks = _level + 1;
+        for (int i = 0; i < _rocks; i++) {
+            GameObject rock = Instantiate(Resources.Load("Prefabs/RockBig", typeof(GameObject))) as GameObject;
+            if (Random.Range(0, 1) == 0) {
+                // Along the right side
+                rock.transform.position = new Vector3(_screenDimensions.x,
+                    Random.Range(_screenDimensions.y, _screenDimensions.y));
+            }
+            else {
+                // Along the bottom             
+                rock.transform.position = new Vector3(Random.Range(_screenDimensions.x, _screenDimensions.x),
+                    _screenDimensions.y);
+            }
+        }
+    }
 }        
