@@ -65,6 +65,10 @@ public class LevelController : MonoBehaviour {
         Destroy(rock.gameObject);
         _scoreText.text = _score.ToString("#,##0");
         _rocks--;
+        if (_rocks <= 0) {
+            _level++;
+            StartCoroutine(StartLevel());
+        }
     }
 
     /**
