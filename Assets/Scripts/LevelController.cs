@@ -68,7 +68,8 @@ public class LevelController : MonoBehaviour {
      * Destroy the passed-in rock, spawning new smaller ones as needed. Increases score.
      */
     public void DestroyRock(RockController rock) {
-        int pieces = (_level % 4) + 1;
+        
+        int pieces = (int)Math.Floor(_level / 4.0f) + 2;
         switch (rock.Size) {
             case Size.Large:
                 _score += 5;
@@ -180,7 +181,7 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
-        _rocks = (_level % 2) + 1;
+        _rocks = (int)Math.Floor(_level / 2.0f) + 2;
         for (int i = 0; i < _rocks; i++) {
             GameObject rock = Instantiate(Resources.Load("Prefabs/RockBig", typeof(GameObject))) as GameObject;
             if (Random.Range(0, 1) == 0) {
