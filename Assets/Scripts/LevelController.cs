@@ -1,9 +1,11 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YamlDotNet.Serialization;
 using Random = UnityEngine.Random;
 
 public class LevelController : MonoBehaviour {
@@ -25,8 +27,9 @@ public class LevelController : MonoBehaviour {
     }
     
     void Start() {
+        GameConfig config = LoadGameConfig();
+        _lives = config.StartingLives;
         _score = 0;
-        _lives = 3;
         _level = 1;
         // Permanently store the dimensions of the screen in world coordinates
         Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
@@ -35,7 +38,7 @@ public class LevelController : MonoBehaviour {
         _scoreText = _hudCanvas.transform.Find("ScoreText").gameObject.GetComponent<Text>();
         _scoreText.text = _score.ToString();
         _livesUI = _hudCanvas.transform.Find("Lives").gameObject;
-        setLivesUI();
+        SetLivesUI();
         _centerTextUI = _hudCanvas.transform.Find("CenterText").gameObject;
         _centerTextUI.SetActive(false);
         _centerText = _centerTextUI.GetComponent<Text>(); 
@@ -47,7 +50,7 @@ public class LevelController : MonoBehaviour {
     /**
      * Adds a spaceship icon for each of the current lives 
      */
-    private void setLivesUI() {
+    private void SetLivesUI() {
         int existing = _livesUI.transform.childCount; 
         if (existing < _lives) {
             // Add child icons until they match
@@ -68,7 +71,6 @@ public class LevelController : MonoBehaviour {
      * Destroy the passed-in rock, spawning new smaller ones as needed. Increases score.
      */
     public void DestroyRock(RockController rock) {
-        
         int pieces = (int)Math.Floor(_level / 4.0f) + 2;
         switch (rock.Size) {
             case Size.Large:
@@ -122,7 +124,7 @@ public class LevelController : MonoBehaviour {
             Destroy(piece, Random.Range(1.5f, 4.0f));
         }
         _lives--;
-        setLivesUI();
+        SetLivesUI();
         if (_lives > 0) {
             StartCoroutine(SpawnSpaceship(3.0f));
         } else {
@@ -170,6 +172,14 @@ public class LevelController : MonoBehaviour {
     private void HideCenterText() {
         _centerText.text = "";
         _centerTextUI.SetActive(false);
+    }
+
+    private static GameConfig LoadGameConfig() {
+        var textFile = Resources.Load<TextAsset>("Config/game-configuration");
+        var input = new StringReader(textFile.text);
+        var deserializer = new DeserializerBuilder()
+            .Build();
+        return deserializer.Deserialize<GameConfig>(input);
     }
 
     /**
