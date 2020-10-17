@@ -37,9 +37,8 @@ public class LevelController : MonoBehaviour {
         _screenDimensions = mainCamera.ViewportToWorldPoint(new Vector3(1.0f, 1.0f, 0.0f));
         _hudCanvas = GameObject.FindGameObjectWithTag("HUDCanvas").GetComponent<Canvas>();
         _scoreText = _hudCanvas.transform.Find("ScoreText").gameObject.GetComponent<Text>();
-        _scoreText.text = _score.ToString();
         _livesUI = _hudCanvas.transform.Find("Lives").gameObject;
-        SetLivesUI();
+        UpdateHUD();
         _centerTextUI = _hudCanvas.transform.Find("CenterText").gameObject;
         _centerTextUI.SetActive(false);
         _centerText = _centerTextUI.GetComponent<Text>(); 
@@ -49,20 +48,21 @@ public class LevelController : MonoBehaviour {
     }
 
     /**
-     * Adds a spaceship icon for each of the current lives 
+     * Sets the score and number of lives in the HUD 
      */
-    private void SetLivesUI() {
-        int existing = _livesUI.transform.childCount; 
-        if (existing < _lives) {
+    private void UpdateHUD() {
+        _scoreText.text = _score.ToString("#,##0");
+        int existingShipIcons = _livesUI.transform.childCount; 
+        if (existingShipIcons < _lives) {
             // Add child icons until they match
-            for (int i = existing; i < Math.Min(_lives, 20); i++) {
+            for (int i = existingShipIcons; i < Math.Min(_lives, 20); i++) {
                 GameObject icon = Instantiate(Resources.Load("Prefabs/LifeIcon", typeof(GameObject)), _livesUI.transform) as GameObject;
                 Vector3 ori = icon.transform.position;
                 icon.transform.position = new Vector3(ori.x - (20.0f * i), ori.y, ori.z);
             }
-        } else if (existing > _lives) {
+        } else if (existingShipIcons > _lives) {
             // Drop children icons until they match
-            for (int i = existing; i > _lives; i--) {
+            for (int i = existingShipIcons; i > _lives; i--) {
                 Destroy(_livesUI.transform.GetChild(i-1).gameObject);
             }
         }
@@ -75,28 +75,27 @@ public class LevelController : MonoBehaviour {
         int pieces = (int)Math.Floor(_level / 4.0f) + 2;
         switch (rock.Size) {
             case Size.Large:
-                _score += _config.Points.LargeRock;
+                ScorePoints(_config.Points.LargeRock);
                 PlaySound("explosion_large");
                 SpawnChildRocks("RockMedium", pieces, rock.transform.position);
                 break;
             case Size.Medium:
-                _score += _config.Points.MediumRock;
+                ScorePoints(_config.Points.MediumRock);
                 PlaySound("explosion_medium");
                 SpawnChildRocks("RockSmall", pieces, rock.transform.position);
                 break;
             case Size.Small:
-                _score += _config.Points.SmallRock;
+                ScorePoints(_config.Points.SmallRock);
                 PlaySound("explosion_small");
                 SpawnChildRocks("RockTiny", pieces + 1, rock.transform.position);
                 break;
             case Size.Tiny:
             default:
-                _score += _config.Points.TinyRock;
+                ScorePoints(_config.Points.TinyRock);
                 PlaySound("explosion_small");
                 break;
         }
         Destroy(rock.gameObject);
-        _scoreText.text = _score.ToString("#,##0");
         _rocks--;
         if (_rocks <= 0) {
             _level++;
@@ -104,6 +103,20 @@ public class LevelController : MonoBehaviour {
         }
     }
 
+    /**
+     * Increases the player's score. Gives extra life if appropriate.
+     */
+    private void ScorePoints(int points) {
+        int nextRewardLevel = (int) Math.Floor((double) _score / _config.PointsForNewLife) + 1;
+        int pointsForNewLife = (nextRewardLevel * _config.PointsForNewLife);
+        _score += points;
+        if (_score >= pointsForNewLife) {
+            PlaySound("extra_life");
+            _lives += 1;
+        }
+        UpdateHUD();
+    }
+    
     /**
      * Plays the specified sound file.
      */
@@ -125,7 +138,7 @@ public class LevelController : MonoBehaviour {
             Destroy(piece, Random.Range(1.5f, 4.0f));
         }
         _lives--;
-        SetLivesUI();
+        UpdateHUD();
         if (_lives > 0) {
             StartCoroutine(SpawnSpaceship(3.0f));
         } else {
