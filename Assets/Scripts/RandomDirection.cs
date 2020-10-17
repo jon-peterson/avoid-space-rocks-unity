@@ -11,14 +11,14 @@ public class RandomDirection : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private float _rotationSpeed;
+    public float SpeedBoost { get; set; }
 
-    // Start is called before the first frame update
     void Start()
     {
         // Rocks never slow down
         _rigidbody2D = GetComponent<Rigidbody2D>();
         // Point the rock in a random direction and set it moving at a random speed
-        _rigidbody2D.velocity = Util.GetRandomVelocity(minSpeed, maxSpeed);
+        _rigidbody2D.velocity = Util.GetRandomVelocity(minSpeed, maxSpeed + SpeedBoost);
         // Give it an appropriate random rotation
         _rotationSpeed = Random.Range(minRotatePerSecond, maxRotatePerSecond);
     }

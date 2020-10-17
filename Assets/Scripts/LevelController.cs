@@ -74,17 +74,17 @@ public class LevelController : MonoBehaviour {
             case Size.Large:
                 _score += 5;
                 PlaySound("explosion_large");
-                SpawnChildRocks("Prefabs/RockMedium", pieces, rock.transform.position);
+                SpawnChildRocks("RockMedium", pieces, rock.transform.position);
                 break;
             case Size.Medium:
                 _score += 10;
                 PlaySound("explosion_medium");
-                SpawnChildRocks("Prefabs/RockSmall", pieces + 1, rock.transform.position);
+                SpawnChildRocks("RockSmall", pieces, rock.transform.position);
                 break;
             case Size.Small:
                 _score += 20;
                 PlaySound("explosion_small");
-                SpawnChildRocks("Prefabs/RockTiny", pieces, rock.transform.position);
+                SpawnChildRocks("RockTiny", pieces + 1, rock.transform.position);
                 break;
             case Size.Tiny:
             default:
@@ -135,8 +135,8 @@ public class LevelController : MonoBehaviour {
      */
     private void SpawnChildRocks(String prefab, int count, Vector3 pos) {
         for (int i = 0; i < count; i++) {
-            GameObject kid = Instantiate(Resources.Load(prefab, typeof(GameObject))) as GameObject;
-            kid.transform.position = pos;
+            GameObject childRock = SpawnRock(prefab);
+            childRock.transform.position = pos;
             _rocks++;
         }
     }
@@ -183,7 +183,7 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
         _rocks = (int)Math.Floor(_level / 2.0f) + 2;
         for (int i = 0; i < _rocks; i++) {
-            GameObject rock = Instantiate(Resources.Load("Prefabs/RockBig", typeof(GameObject))) as GameObject;
+            GameObject rock = SpawnRock("RockBig");
             if (Random.Range(0, 1) == 0) {
                 // Along the right side
                 rock.transform.position = new Vector3(_screenDimensions.x,
@@ -195,5 +195,14 @@ public class LevelController : MonoBehaviour {
                     _screenDimensions.y);
             }
         }
+    }
+
+    /**
+     * Creates and returns a new rock with the given type (like "RockBig")
+     */
+    private GameObject SpawnRock(String type) {
+        GameObject rock = Instantiate(Resources.Load("Prefabs/" + type, typeof(GameObject))) as GameObject;
+        rock.GetComponent<RandomDirection>().SpeedBoost = (_level * 0.1f);
+        return rock;
     }
 }        

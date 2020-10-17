@@ -163,4 +163,4 @@ MonoBehaviour:
   minRotatePerSecond: 10
   maxRotatePerSecond: 90
   minSpeed: 0.2
-  maxSpeed: 1.5
+  maxSpeed: 1

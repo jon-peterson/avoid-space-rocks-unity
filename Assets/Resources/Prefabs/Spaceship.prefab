@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 270
-  fuelBoost: 8
-  maxSpeed: 15
+  fuelBoost: 6
+  maxSpeed: 12
 --- !u!114 &7429000933132889659
 MonoBehaviour:
   m_ObjectHideFlags: 0
