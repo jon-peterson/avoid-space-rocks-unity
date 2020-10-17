@@ -16,6 +16,7 @@ public class LevelController : MonoBehaviour {
     private Text _centerText;
     private GameObject _livesUI;
     private Vector3 _screenDimensions;
+    private GameConfig _config;
     private int _rocks;
     private int _lives;
     private int _score;
@@ -27,8 +28,8 @@ public class LevelController : MonoBehaviour {
     }
     
     void Start() {
-        GameConfig config = LoadGameConfig();
-        _lives = config.StartingLives;
+        _config = LoadGameConfig();
+        _lives = _config.StartingLives;
         _score = 0;
         _level = 1;
         // Permanently store the dimensions of the screen in world coordinates
@@ -74,23 +75,23 @@ public class LevelController : MonoBehaviour {
         int pieces = (int)Math.Floor(_level / 4.0f) + 2;
         switch (rock.Size) {
             case Size.Large:
-                _score += 5;
+                _score += _config.Points.LargeRock;
                 PlaySound("explosion_large");
                 SpawnChildRocks("RockMedium", pieces, rock.transform.position);
                 break;
             case Size.Medium:
-                _score += 10;
+                _score += _config.Points.MediumRock;
                 PlaySound("explosion_medium");
                 SpawnChildRocks("RockSmall", pieces, rock.transform.position);
                 break;
             case Size.Small:
-                _score += 20;
+                _score += _config.Points.SmallRock;
                 PlaySound("explosion_small");
                 SpawnChildRocks("RockTiny", pieces + 1, rock.transform.position);
                 break;
             case Size.Tiny:
             default:
-                _score += 30;
+                _score += _config.Points.TinyRock;
                 PlaySound("explosion_small");
                 break;
         }
@@ -177,8 +178,7 @@ public class LevelController : MonoBehaviour {
     private static GameConfig LoadGameConfig() {
         var textFile = Resources.Load<TextAsset>("Config/game-configuration");
         var input = new StringReader(textFile.text);
-        var deserializer = new DeserializerBuilder()
-            .Build();
+        var deserializer = new DeserializerBuilder().Build();
         return deserializer.Deserialize<GameConfig>(input);
     }
 
