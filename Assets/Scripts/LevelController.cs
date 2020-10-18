@@ -127,13 +127,8 @@ public class LevelController : MonoBehaviour {
     public void DestroySpaceship(SpaceshipController spaceshipController) {
         PlaySound("explosion_ship");
         Destroy(spaceshipController.gameObject);
-        // Spawn four pieces of the spaceship flying off in different directions
-        for (int i = 0; i < 4; i++) {
-            String part = i % 2 == 1 ? "SpaceshipPartLarge" : "SpaceshipPartSmall";
-            GameObject piece = Instantiate(Resources.Load("Prefabs/" + part, typeof(GameObject))) as GameObject;
-            piece.transform.position = spaceshipController.transform.position;
-            Destroy(piece, Random.Range(1.5f, 4.0f));
-        }
+        // Spawn four pieces of the spaceship flying off in different directions, then they go away
+        spaceshipController.GetSpaceshipPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
         _lives--;
         UpdateHUD();
         if (_lives > 0) {

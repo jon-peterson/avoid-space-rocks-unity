@@ -1,6 +1,7 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -110,6 +111,20 @@ public class SpaceshipController : MonoBehaviour {
         _renderer.enabled = true;
     }
 
+    /**
+     * Returns a list of four pieces of the spaceship, moving in random directions
+     */
+    public List<GameObject> GetSpaceshipPieces() {
+        List<GameObject> pieces = new List<GameObject>();
+        for (int i = 0; i < 4; i++) {
+            string part = i % 2 == 1 ? "SpaceshipPartLarge" : "SpaceshipPartSmall";
+            GameObject piece = Instantiate(Resources.Load("Prefabs/" + part, typeof(GameObject))) as GameObject;
+            piece.transform.position = gameObject.transform.position;
+            pieces.Add(piece);
+        }
+        return pieces;
+    } 
+    
     // Blow up if I get hit by a rock
     public void OnTriggerEnter2D(Collider2D other) {
         RockController rock = other.gameObject.GetComponent<RockController>();
