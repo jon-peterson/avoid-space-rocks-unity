@@ -32,9 +32,6 @@ public class LevelController : MonoBehaviour {
         _lives = _config.StartingLives;
         _score = 0;
         _level = 1;
-        // Permanently store the dimensions of the screen in world coordinates
-        Camera mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        _screenDimensions = mainCamera.ViewportToWorldPoint(new Vector3(1.0f, 1.0f, 0.0f));
         _hudCanvas = GameObject.FindGameObjectWithTag("HUDCanvas").GetComponent<Canvas>();
         _scoreText = _hudCanvas.transform.Find("ScoreText").gameObject.GetComponent<Text>();
         _livesUI = _hudCanvas.transform.Find("Lives").gameObject;
@@ -163,7 +160,8 @@ public class LevelController : MonoBehaviour {
     private IEnumerator SpawnSpaceship(float delay) {
         yield return new WaitForSeconds(delay);
         GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
-        spaceship.transform.position = new Vector3(0.0f, 0.0f);
+        spaceship.transform.position = new Vector3(0f, 0f);
+        spaceship.transform.eulerAngles = new Vector3(0f, 0f, 90f);
     }
 
     /**
@@ -172,7 +170,7 @@ public class LevelController : MonoBehaviour {
     private IEnumerator GameOver() {
         yield return new WaitForSeconds(3.0f);
         ShowCenterText("Game Over");
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(3.0f);
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene("AttractModeScene", LoadSceneMode.Single);
@@ -207,16 +205,13 @@ public class LevelController : MonoBehaviour {
         _rocks = (int)Math.Floor(_level / 2.0f) + 2;
         for (int i = 0; i < _rocks; i++) {
             GameObject rock = SpawnRock("RockBig");
+            Vector2 randomL = Util.GetRandomLocation();
             if (Random.Range(0, 1) == 0) {
-                // Along the right side
-                rock.transform.position = new Vector3(_screenDimensions.x,
-                    Random.Range(_screenDimensions.y, _screenDimensions.y));
+                randomL.x = Util.GetWorldSpace().Left;
+            } else {
+                randomL.y = Util.GetWorldSpace().Top;
             }
-            else {
-                // Along the bottom             
-                rock.transform.position = new Vector3(Random.Range(_screenDimensions.x, _screenDimensions.x),
-                    _screenDimensions.y);
-            }
+            rock.transform.position = new Vector3(randomL.x, randomL.y, 0);
         }
     }
 
