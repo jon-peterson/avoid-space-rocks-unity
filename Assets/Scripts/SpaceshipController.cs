@@ -26,6 +26,7 @@ public class SpaceshipController : MonoBehaviour {
     private AudioClip _audioFuelBurn;
     private LevelController _levelController;
     private bool _fuelBurning;
+    private List<GameObject> _pieces;
 
     void Awake() {
         _animator = GetComponent<Animator>();
@@ -95,8 +96,13 @@ public class SpaceshipController : MonoBehaviour {
         LeaveHyperspace();
     }
     
+    /**
+     * Enter hyperspace: hide the spaceship and replace it with four pieces of it, moving away quickly for one second.
+     */
     private void EnterHyperspace() {
         _levelController.PlaySound("hyperspace");
+        _pieces = GetSpaceshipPieces();
+        _pieces.ForEach(piece => StartCoroutine(HyperspacePiece(piece)));
         transform.position = Util.GetRandomLocation();
         transform.eulerAngles = new Vector3(0f, 0f, Random.Range(0, 360f));
         _rigidbody2D.velocity = Vector2.zero;
@@ -106,7 +112,23 @@ public class SpaceshipController : MonoBehaviour {
         _renderer.enabled = false;
     }
 
+    /**
+     * Control a piece of the spaceship during hyperspace: move it rapidly away for one second then rapidly back
+     */
+    private IEnumerator HyperspacePiece(GameObject piece) {
+        piece.GetComponent<RandomDirection>().SpeedBoost = 8f;
+        yield return new WaitForSeconds(1f);
+        Rigidbody2D body = piece.GetComponent<Rigidbody2D>();
+        body.velocity = gameObject.transform.position - body.transform.position;  
+        yield return new WaitForSeconds(1f);
+        Destroy(piece);
+    }
+
+    /**
+     * Leave hyperspace: make the spaceship visible and controllable again
+     */
     private void LeaveHyperspace() {
+        _pieces.Clear();
         _collider.enabled = true;        
         _renderer.enabled = true;
     }
