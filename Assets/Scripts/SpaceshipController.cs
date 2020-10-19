@@ -101,11 +101,14 @@ public class SpaceshipController : MonoBehaviour {
      */
     private void EnterHyperspace() {
         _levelController.PlaySound("hyperspace");
+        // Spawn four fast-moving pieces to represent the effect
         _pieces = GetSpaceshipPieces();
         _pieces.ForEach(piece => StartCoroutine(HyperspacePiece(piece)));
-        transform.position = Util.GetRandomLocation();
+        // Move the spaceship somewhere in the world (but not at the very edge), not moving, pointing randomly
+        transform.position = Util.GetRandomLocation() * 0.9f;
         transform.eulerAngles = new Vector3(0f, 0f, Random.Range(0, 360f));
         _rigidbody2D.velocity = Vector2.zero;
+        // Stop all the various effects
         _fuelBurning = false;
         _audioSource.Stop();
         _collider.enabled = false;
