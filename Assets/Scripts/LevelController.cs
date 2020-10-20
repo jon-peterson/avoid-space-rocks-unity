@@ -45,8 +45,10 @@ public class LevelController : MonoBehaviour {
     }
 
     void Update() {
+#if UNITY_EDITOR	
         if (Input.GetKeyDown("1"))
             StartCoroutine(SpawnAlienBig(0.0f));
+#endif        
     }
 
     /**
