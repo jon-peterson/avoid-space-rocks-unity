@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7247533267328365030}
   - component: {fileID: 5498185317422017150}
   - component: {fileID: -1084807475117836210}
+  - component: {fileID: 8493614878051857731}
   m_Layer: 0
   m_Name: AlienBig
   m_TagString: Untagged
@@ -138,3 +139,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &8493614878051857731
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7247533267328365033}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.54, y: 0.32}
+    newSize: {x: 0.54, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.22662675, y: -0.036830187}
+      - {x: 0.16629304, y: 0.1001102}
+      - {x: -0.16415708, y: 0.09864959}
+      - {x: -0.23494256, y: -0.043036312}
+      - {x: -0.2860679, y: -0.045728132}
+      - {x: -0.24, y: -0.16}
+      - {x: 0.2247175, y: -0.16584292}
+      - {x: 0.29152262, y: -0.041576147}
