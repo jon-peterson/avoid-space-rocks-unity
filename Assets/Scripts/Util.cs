@@ -1,7 +1,6 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.UIElements;
 
 public class Util {
 
@@ -65,5 +64,25 @@ public class Util {
     public static Vector2 GetRandomLocation() {
         WorldSpace world = GetWorldSpace();
         return new Vector2(Random.Range(world.Left, world.Right), Random.Range(world.Bottom, world.Top));
+    }
+
+    public static Vector2 GetRandomLocationTopEdge() {
+        WorldSpace world = GetWorldSpace();
+        return new Vector2(Random.Range(world.Left, world.Right), world.Top);
+    }
+    
+    public static Vector2 GetRandomLocationBottomEdge() {
+        WorldSpace world = GetWorldSpace();
+        return new Vector2(Random.Range(world.Left, world.Right), world.Bottom);
+    }
+    
+    public static Vector2 GetRandomLocationLeftEdge() {
+        WorldSpace world = GetWorldSpace();
+        return new Vector2(world.Left, Random.Range(world.Bottom, world.Top));
+    }
+
+    public static Vector2 GetRandomLocationRightEdge() {
+        WorldSpace world = GetWorldSpace();
+        return new Vector2(world.Right, Random.Range(world.Bottom, world.Top));
     }
 }

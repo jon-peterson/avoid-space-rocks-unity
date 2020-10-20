@@ -143,8 +143,7 @@ public class LevelController : MonoBehaviour {
      */
     private void SpawnChildRocks(String prefab, int count, Vector3 pos) {
         for (int i = 0; i < count; i++) {
-            GameObject childRock = SpawnRock(prefab);
-            childRock.transform.position = pos;
+            SpawnRock(prefab, pos);
             _rocks++;
         }
     }
@@ -199,22 +198,17 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
         _rocks = (int)Math.Floor(_level / 2.0f) + 2;
         for (int i = 0; i < _rocks; i++) {
-            GameObject rock = SpawnRock("RockBig");
-            Vector2 randomL = Util.GetRandomLocation();
-            if (Random.Range(0, 1) == 0) {
-                randomL.x = Util.GetWorldSpace().Left;
-            } else {
-                randomL.y = Util.GetWorldSpace().Top;
-            }
-            rock.transform.position = new Vector3(randomL.x, randomL.y, 0);
+            SpawnRock("RockBig",
+                Random.Range(0, 1) == 0 ? Util.GetRandomLocationTopEdge() : Util.GetRandomLocationLeftEdge());
         }
     }
 
     /**
-     * Creates and returns a new rock with the given type (like "RockBig")
+     * Creates and returns a new rock with the given type (like "RockBig") at the specified location
      */
-    private GameObject SpawnRock(String type) {
+    private GameObject SpawnRock(String type, Vector2 position) {
         GameObject rock = Instantiate(Resources.Load("Prefabs/" + type, typeof(GameObject))) as GameObject;
+        rock.transform.position = position;
         rock.GetComponent<RandomDirection>().SpeedBoost = (_level * 0.1f);
         return rock;
     }
