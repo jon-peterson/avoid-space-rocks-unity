@@ -1,6 +1,9 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
+
+using System;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 
 public class Util {
 
@@ -35,6 +38,7 @@ public class Util {
                 _worldSpace = new WorldSpace(-screen.x, screen.x, screen.y, -screen.y);
             }
         }
+
         return _worldSpace;
     }
 
@@ -46,6 +50,7 @@ public class Util {
         if (lc != null) {
             return lc.GetComponent<LevelController>();
         }
+
         return null;
     }
 
@@ -70,12 +75,12 @@ public class Util {
         WorldSpace world = GetWorldSpace();
         return new Vector2(Random.Range(world.Left, world.Right), world.Top);
     }
-    
+
     public static Vector2 GetRandomLocationBottomEdge() {
         WorldSpace world = GetWorldSpace();
         return new Vector2(Random.Range(world.Left, world.Right), world.Bottom);
     }
-    
+
     public static Vector2 GetRandomLocationLeftEdge() {
         WorldSpace world = GetWorldSpace();
         return new Vector2(world.Left, Random.Range(world.Bottom, world.Top));
@@ -84,5 +89,13 @@ public class Util {
     public static Vector2 GetRandomLocationRightEdge() {
         WorldSpace world = GetWorldSpace();
         return new Vector2(world.Right, Random.Range(world.Bottom, world.Top));
+    }
+
+    public static bool IsOutsideWorldspace(Vector2 pos) {
+        WorldSpace world = GetWorldSpace();
+        return (pos.x < (world.Left - 0.1)) ||
+               (pos.x > (world.Right + 0.1)) ||
+               (pos.y > (world.Top + 0.1)) ||
+               (pos.y < (world.Bottom - 0.1));
     }
 }

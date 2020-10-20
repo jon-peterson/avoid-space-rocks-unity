@@ -44,6 +44,11 @@ public class LevelController : MonoBehaviour {
         StartCoroutine(SpawnSpaceship(5.0f));
     }
 
+    void Update() {
+        if (Input.GetKeyDown("1"))
+            StartCoroutine(SpawnAlienBig(0.0f));
+    }
+
     /**
      * Sets the score and number of lives in the HUD 
      */
@@ -153,9 +158,14 @@ public class LevelController : MonoBehaviour {
      */
     private IEnumerator SpawnSpaceship(float delay) {
         yield return new WaitForSeconds(delay);
-        GameObject spaceship = Instantiate(Resources.Load("Prefabs/Spaceship", typeof(GameObject))) as GameObject;
+        SpaceshipController spaceship = Instantiate(Resources.Load<SpaceshipController>("Prefabs/Spaceship"));
         spaceship.transform.position = new Vector3(0f, 0f);
         spaceship.transform.eulerAngles = new Vector3(0f, 0f, 90f);
+    }
+
+    private IEnumerator SpawnAlienBig(float delay) {
+        yield return new WaitForSeconds(delay);
+        AlienController alien = Instantiate(Resources.Load<AlienController>("Prefabs/AlienBig"));
     }
 
     /**

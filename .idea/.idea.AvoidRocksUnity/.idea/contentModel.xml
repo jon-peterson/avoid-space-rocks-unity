@@ -17,6 +17,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AlienController.cs" t="Include" />
           <e p="AttractModeController.cs" t="Include" />
           <e p="BulletController.cs" t="Include" />
           <e p="GameConfig.cs" t="Include" />

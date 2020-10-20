@@ -22,10 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Modest refactor to put piece generation in spaceship">
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Code cleanup; no functionality changes">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/AlienController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RandomDirection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RandomDirection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/AlienBig.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/AlienBig.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Util.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Util.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,13 +47,19 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/51/13b7f1d8/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/8d/a10718aa/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/Util.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CAB14A-C59E-4552-B77F-98A4AED18F9E/a8/ee93a31a/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/79/cbad9530/Screen.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/AlienBig.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AlienController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/0f/69c624f8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/Util.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -66,10 +76,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/GameConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/Config/game-configuration.yaml" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WraparoundMovement.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Util.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RandomDirection.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AlienController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Util.cs" />
       </list>
     </option>
   </component>
@@ -139,35 +150,7 @@
       <workItem from="1602504158990" duration="11297000" />
       <workItem from="1602952146399" duration="906000" />
       <workItem from="1602953073152" duration="5996000" />
-      <workItem from="1603034704850" duration="7904000" />
-    </task>
-    <task id="LOCAL-00001" summary="Initial checkin of default Unity project">
-      <created>1599321405334</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1599321405334</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Raw sprites for spaceship">
-      <created>1599322335060</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1599322335060</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Basic spaceship rotate; pixel-perfect camera">
-      <created>1599323895584</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1599323895584</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add wraparound movement behavior; tweak spaceship movement">
-      <created>1599422892104</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1599422892104</updated>
+      <workItem from="1603034704850" duration="13125000" />
     </task>
     <task id="LOCAL-00005" summary="Implement fuel burning animation">
       <created>1599424281942</created>
@@ -477,7 +460,42 @@
       <option name="project" value="LOCAL" />
       <updated>1603041808035</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Implement graphic effect for hyperspace">
+      <created>1603043320974</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1603043320974</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Better commenting; no functionality changes">
+      <created>1603114696932</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1603114696933</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Add big alien spaceship graphic">
+      <created>1603114723777</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1603114723777</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Create basic alien ship and prefab">
+      <created>1603115750899</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1603115750899</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Code cleanup; no functionality changes">
+      <created>1603154236352</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1603154236352</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -496,11 +514,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Tiny rocks and big rocks spawn small ones" />
-    <MESSAGE value="Spaceship can blow up" />
-    <MESSAGE value="Add score widget in the upper left" />
-    <MESSAGE value="Behavior for random direction; spaceship parts" />
-    <MESSAGE value="HUD for number of ships left" />
     <MESSAGE value="Missed metafiles for sprints and prefabs" />
     <MESSAGE value="Add multiple lives" />
     <MESSAGE value="Basic sound effects for explosions and stuff" />
@@ -521,7 +534,12 @@
     <MESSAGE value="Util now returns world space; enable hyperspace feature" />
     <MESSAGE value="Sound for hyperspace" />
     <MESSAGE value="Modest refactor to put piece generation in spaceship" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modest refactor to put piece generation in spaceship" />
+    <MESSAGE value="Implement graphic effect for hyperspace" />
+    <MESSAGE value="Better commenting; no functionality changes" />
+    <MESSAGE value="Add big alien spaceship graphic" />
+    <MESSAGE value="Create basic alien ship and prefab" />
+    <MESSAGE value="Code cleanup; no functionality changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup; no functionality changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
@@ -608,10 +626,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1603036823617" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1602959357287">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1603115753082">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1602959357287" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1603115753082" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603036990563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -620,10 +638,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="254" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600696049223" />
-    <state x="637" y="119" width="646" height="801" key="find.popup" timestamp="1602164369791">
+    <state x="637" y="119" width="646" height="801" key="find.popup" timestamp="1603155199816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="637" y="119" width="646" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602164369791" />
+    <state x="637" y="119" width="646" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603155199816" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602506308351">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
