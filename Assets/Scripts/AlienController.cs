@@ -76,11 +76,12 @@ public class AlienController : MonoBehaviour
         // Wait a random period of time
         yield return new WaitForSeconds(Random.Range(minFireDelay, maxFireDelay));
         // Fire a bullet at the player
-        // TODO: Only if there is actually a player
-        // TODO: Actually point it at the player
-        _levelController.PlaySound("fire_alien");
-        BulletController bullet = Instantiate(Resources.Load<BulletController>("Prefabs/Bullet"));
-        bullet.InitializeFromAlien(this);
+        GameObject spaceship = GameObject.FindWithTag("Player");
+        if (spaceship != null) {
+            _levelController.PlaySound("fire_alien");
+            BulletController bullet = Instantiate(Resources.Load<BulletController>("Prefabs/Bullet"));
+            bullet.InitializeFromAlien(this, spaceship.GetComponent<SpaceshipController>());
+        }
         // Spawn this again
         StartCoroutine(FireAtSpaceship());
     }

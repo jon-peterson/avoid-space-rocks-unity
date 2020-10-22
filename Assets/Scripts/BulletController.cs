@@ -6,8 +6,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
     [SerializeField] private float bulletSpeed = 5.0f;
-    private Rigidbody2D _rigidbody2D = null;
-    private LevelController _levelController = null;
+    private Rigidbody2D _rigidbody2D;
+    private LevelController _levelController;
     
     // Start is called before the first frame update
     void Start() {
@@ -30,11 +30,10 @@ public class BulletController : MonoBehaviour {
     /**
      * Called when an Alien fires the bullet: point the bullet where the spaceship is now
      */
-    public void InitializeFromAlien(AlienController alien) {
-        _rigidbody2D = GetComponent<Rigidbody2D>(); 
-        Vector2 forward = alien.transform.TransformDirection(Vector3.right);
-        Vector2 boost = (forward.normalized * bulletSpeed);
-        _rigidbody2D.velocity = alien.GetComponent<Rigidbody2D>().velocity + boost;
+    public void InitializeFromAlien(AlienController alien, SpaceshipController spaceship) {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        Vector2 toSpaceship = spaceship.transform.position - alien.transform.position;
+        _rigidbody2D.velocity = toSpaceship.normalized * bulletSpeed;
         gameObject.transform.position = alien.transform.position;
     }
 
