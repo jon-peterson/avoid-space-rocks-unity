@@ -1,5 +1,6 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,18 @@ public class AlienController : MonoBehaviour
 {
     // How fast the ship moves
     [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float minFireDelay = 1.0f;
+    [SerializeField] private float maxFireDelay = 3.0f;
+    
     private Vector3 _destination;
     private Rigidbody2D _rigidbody2D;
+    private AudioSource _audioSource;
+    private AudioClip _audioAlienMove;
     private LevelController _levelController;
 
     void Awake() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _audioSource = gameObject.AddComponent<AudioSource>();
     }
     
     void Start()
@@ -42,6 +49,8 @@ public class AlienController : MonoBehaviour
         }
         // Calculate the velocity that the spaceship needs to hit it
         _rigidbody2D.velocity = (_destination - transform.position) * speed;
+        // Start the shooting coroutine
+        StartCoroutine(FireAtSpaceship());
     }
     
     void Update()
@@ -57,6 +66,23 @@ public class AlienController : MonoBehaviour
         if (rock != null) {
             _levelController.DestroyAlien(this);
         }
+    }
+
+    /**
+     * After a pseudo-random delay, fires at the player's spaceship
+     * 
+     */
+    private IEnumerator FireAtSpaceship() {
+        // Wait a random period of time
+        yield return new WaitForSeconds(Random.Range(minFireDelay, maxFireDelay));
+        // Fire a bullet at the player
+        // TODO: Only if there is actually a player
+        // TODO: Actually point it at the player
+        _levelController.PlaySound("fire_alien");
+        BulletController bullet = Instantiate(Resources.Load<BulletController>("Prefabs/Bullet"));
+        bullet.InitializeFromAlien(this);
+        // Spawn this again
+        StartCoroutine(FireAtSpaceship());
     }
 
     /**

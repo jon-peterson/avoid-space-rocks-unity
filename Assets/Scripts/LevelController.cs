@@ -149,12 +149,11 @@ public class LevelController : MonoBehaviour {
      * Destroys the passed-in alien, adding to score
      */
     public void DestroyAlien(AlienController alienController) {
-        PlaySound("explosion_ship");
+        PlaySound("explosion_alien");
         Destroy(alienController.gameObject);
         // Spawn four pieces of the spaceship flying off in different directions, then they go away
         alienController.GetAlienPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
     }
-
 
     /**
      * Spawns a number of rock types at a specific position

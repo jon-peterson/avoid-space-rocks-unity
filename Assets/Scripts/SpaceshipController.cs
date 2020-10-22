@@ -32,11 +32,11 @@ public class SpaceshipController : MonoBehaviour {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider = GetComponent<PolygonCollider2D>();
         _renderer = GetComponent<SpriteRenderer>();
+        _audioSource = gameObject.AddComponent<AudioSource>();
     }
     
     void Start() {
         _levelController = Util.GetLevelController();
-        _audioSource = gameObject.AddComponent<AudioSource>();
         _audioFuelBurn = Resources.Load<AudioClip>("Audio/fuel_burn");
         _fuelBurning = false;
     }
@@ -75,8 +75,8 @@ public class SpaceshipController : MonoBehaviour {
         // Fire
         if (Input.GetKeyDown("space")) {
             _levelController.PlaySound("fire");
-            BulletController bullet = Instantiate(Resources.Load("Prefabs/Bullet", typeof(BulletController))) as BulletController;
-            bullet.Initialize(this);
+            BulletController bullet = Instantiate(Resources.Load<BulletController>("Prefabs/Bullet"));
+            bullet.InitializeFromSpaceship(this);
         }
         
         // Hyperspace

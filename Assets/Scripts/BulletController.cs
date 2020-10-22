@@ -15,13 +15,27 @@ public class BulletController : MonoBehaviour {
         _levelController = Util.GetLevelController();
     }
 
-    public void Initialize(SpaceshipController spaceship) {
+    /**
+     * Called when a spaceship fires the bullet: set the velocity based on how the ship is currently moving
+     */
+    public void InitializeFromSpaceship(SpaceshipController spaceship) {
         // The velocity of the bullet is the same direction as the spaceship points only faster
         _rigidbody2D = GetComponent<Rigidbody2D>(); 
         Vector2 forward = spaceship.transform.TransformDirection(Vector3.right);
         Vector2 boost = (forward.normalized * bulletSpeed);
         _rigidbody2D.velocity = spaceship.GetComponent<Rigidbody2D>().velocity + boost;
         gameObject.transform.position = spaceship.transform.position;
+    }
+
+    /**
+     * Called when an Alien fires the bullet: point the bullet where the spaceship is now
+     */
+    public void InitializeFromAlien(AlienController alien) {
+        _rigidbody2D = GetComponent<Rigidbody2D>(); 
+        Vector2 forward = alien.transform.TransformDirection(Vector3.right);
+        Vector2 boost = (forward.normalized * bulletSpeed);
+        _rigidbody2D.velocity = alien.GetComponent<Rigidbody2D>().velocity + boost;
+        gameObject.transform.position = alien.transform.position;
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
