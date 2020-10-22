@@ -75,15 +75,16 @@ public class AlienController : MonoBehaviour
     private IEnumerator FireAtSpaceship() {
         // Wait a random period of time
         yield return new WaitForSeconds(Random.Range(minFireDelay, maxFireDelay));
-        // Fire a bullet at the player
+        // Fire a bullet at the player, if the spaceship is still around
         GameObject spaceship = GameObject.FindWithTag("Player");
         if (spaceship != null) {
             _levelController.PlaySound("fire_alien");
             BulletController bullet = Instantiate(Resources.Load<BulletController>("Prefabs/Bullet"));
             bullet.InitializeFromAlien(this, spaceship.GetComponent<SpaceshipController>());
+            // Wait for the bullet to finish, then shoot again
+            yield return new WaitForSeconds(bullet.BulletLifetime);
+            StartCoroutine(FireAtSpaceship());
         }
-        // Spawn this again
-        StartCoroutine(FireAtSpaceship());
     }
 
     /**

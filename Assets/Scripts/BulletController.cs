@@ -6,12 +6,20 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
     [SerializeField] private float bulletSpeed = 5.0f;
+    [SerializeField] private float bulletLifetime = 2.0f;
     private Rigidbody2D _rigidbody2D;
     private LevelController _levelController;
+    private bool _firedFromSpaceship;
+
+    public float BulletLifetime {
+        get {
+            return bulletLifetime;
+        }
+    }
     
     // Start is called before the first frame update
     void Start() {
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, bulletLifetime);
         _levelController = Util.GetLevelController();
     }
 
@@ -19,6 +27,7 @@ public class BulletController : MonoBehaviour {
      * Called when a spaceship fires the bullet: set the velocity based on how the ship is currently moving
      */
     public void InitializeFromSpaceship(SpaceshipController spaceship) {
+        _firedFromSpaceship = true;
         // The velocity of the bullet is the same direction as the spaceship points only faster
         _rigidbody2D = GetComponent<Rigidbody2D>(); 
         Vector2 forward = spaceship.transform.TransformDirection(Vector3.right);
@@ -32,16 +41,30 @@ public class BulletController : MonoBehaviour {
      */
     public void InitializeFromAlien(AlienController alien, SpaceshipController spaceship) {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        Vector2 toSpaceship = spaceship.transform.position - alien.transform.position;
+        Vector2 alienPos = alien.transform.position;
+        Vector2 toSpaceship = (Vector2)spaceship.transform.position - alienPos;
         _rigidbody2D.velocity = toSpaceship.normalized * bulletSpeed;
-        gameObject.transform.position = alien.transform.position;
+        gameObject.transform.position = alienPos;
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
         RockController rock = other.gameObject.GetComponent<RockController>();
-        if (rock != null) {
+        if (rock) {
             _levelController.DestroyRock(rock);
             Destroy(gameObject);
+            return;
+        }
+        SpaceshipController spaceship = other.gameObject.GetComponent<SpaceshipController>();
+        if (spaceship && !_firedFromSpaceship) {
+            _levelController.DestroySpaceship(spaceship);
+            Destroy(gameObject);
+            return;
+        }
+        AlienController alien = other.gameObject.GetComponent<AlienController>();
+        if (alien && _firedFromSpaceship) {
+            _levelController.DestroyAlien(alien);
+            Destroy(gameObject);
+            return;
         }
     }
 }
