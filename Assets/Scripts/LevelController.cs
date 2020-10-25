@@ -46,7 +46,14 @@ public class LevelController : MonoBehaviour {
 
     void Update() {
 #if UNITY_EDITOR	
+        if (Input.GetKeyDown("0")) {
+            // Call destroy rock for every rock. Spawns the children and stuff
+            RockController[] rocks = GameObject.FindObjectsOfType<RockController>();
+            foreach(RockController rock in rocks)
+                DestroyRock(rock);
+        }
         if (Input.GetKeyDown("1"))
+            // Spawn a big alien ship
             StartCoroutine(SpawnAlienBig(0.0f));
 #endif        
     }
@@ -73,6 +80,13 @@ public class LevelController : MonoBehaviour {
     }
 
     /**
+     * Plays the specified sound file.
+     */
+    public void PlaySound(String sound) {
+        _audioSource.PlayOneShot(Resources.Load<AudioClip>("Audio/" + sound));
+    }
+    
+    /**
      * Destroy the passed-in rock, spawning new smaller ones as needed. Increases score.
      */
     public void DestroyRock(RockController rock) {
@@ -86,12 +100,14 @@ public class LevelController : MonoBehaviour {
             case Size.Medium:
                 ScorePoints(_config.Points.MediumRock);
                 PlaySound("explosion_medium");
-                SpawnChildRocks("RockSmall", pieces, rock.transform.position);
+                if(_level > 1)
+                    SpawnChildRocks("RockSmall", pieces, rock.transform.position);
                 break;
             case Size.Small:
                 ScorePoints(_config.Points.SmallRock);
                 PlaySound("explosion_small");
-                SpawnChildRocks("RockTiny", pieces + 1, rock.transform.position);
+                if(_level > 3)
+                    SpawnChildRocks("RockTiny", pieces + 1, rock.transform.position);
                 break;
             case Size.Tiny:
             default:
@@ -119,13 +135,6 @@ public class LevelController : MonoBehaviour {
             _lives += 1;
         }
         UpdateHUD();
-    }
-    
-    /**
-     * Plays the specified sound file.
-     */
-    public void PlaySound(String sound) {
-        _audioSource.PlayOneShot(Resources.Load<AudioClip>("Audio/" + sound));
     }
     
     /**
