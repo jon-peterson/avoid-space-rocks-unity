@@ -22,6 +22,10 @@ public class BulletController : MonoBehaviour {
         Destroy(gameObject, bulletLifetime);
         _levelController = Util.GetLevelController();
     }
+    
+    void Awake() {        
+        _rigidbody2D = GetComponent<Rigidbody2D>(); 
+    }
 
     /**
      * Called when a spaceship fires the bullet: set the velocity based on how the ship is currently moving
@@ -29,7 +33,6 @@ public class BulletController : MonoBehaviour {
     public void InitializeFromSpaceship(SpaceshipController spaceship) {
         _firedFromSpaceship = true;
         // The velocity of the bullet is the same direction as the spaceship points only faster
-        _rigidbody2D = GetComponent<Rigidbody2D>(); 
         Vector2 forward = spaceship.transform.TransformDirection(Vector3.right);
         Vector2 boost = (forward.normalized * bulletSpeed);
         _rigidbody2D.velocity = spaceship.GetComponent<Rigidbody2D>().velocity + boost;
@@ -37,12 +40,17 @@ public class BulletController : MonoBehaviour {
     }
 
     /**
-     * Called when an Alien fires the bullet: point the bullet where the spaceship is now
+     * Called when an Alien fires the bullet: point the bullet where the spaceship is now. Lower loose numbers
+     * are better -- a loose of zero shoots directly at where the spaceship is now; a higher loose means further
+     * away from the spaceship, in unit terms, but random.
      */
-    public void InitializeFromAlien(AlienController alien, SpaceshipController spaceship) {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+    public void InitializeFromAlien(AlienController alien, SpaceshipController spaceship, float loose) {
+        float wiggleX = Random.Range(-loose, loose);
+        float wiggleY = Random.Range(-loose, loose);
         Vector2 alienPos = alien.transform.position;
-        Vector2 toSpaceship = (Vector2)spaceship.transform.position - alienPos;
+        Vector2 spaceshipPos = spaceship.transform.position;
+        Vector2 targetPos = new Vector2(spaceshipPos.x + wiggleX, spaceshipPos.y + wiggleY);
+        Vector2 toSpaceship = targetPos - alienPos;
         _rigidbody2D.velocity = toSpaceship.normalized * bulletSpeed;
         gameObject.transform.position = alienPos;
     }

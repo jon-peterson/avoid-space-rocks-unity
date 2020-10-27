@@ -80,7 +80,7 @@ public class AlienController : MonoBehaviour
         if (spaceship != null) {
             _levelController.PlaySound("fire_alien");
             BulletController bullet = Instantiate(Resources.Load<BulletController>("Prefabs/Bullet"));
-            bullet.InitializeFromAlien(this, spaceship.GetComponent<SpaceshipController>());
+            bullet.InitializeFromAlien(this, spaceship.GetComponent<SpaceshipController>(), 1.0f);
             // Wait for the bullet to finish, then shoot again
             yield return new WaitForSeconds(bullet.BulletLifetime);
             StartCoroutine(FireAtSpaceship());
