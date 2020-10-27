@@ -22,6 +22,7 @@ public class LevelController : MonoBehaviour {
     private int _score;
     private int _level;
     private AudioSource _audioSource;
+    private Coroutine _spawnAliensCoroutine;
 
     void Awake() {
         _audioSource = gameObject.AddComponent<AudioSource>();
@@ -54,7 +55,7 @@ public class LevelController : MonoBehaviour {
         }
         if (Input.GetKeyDown("1"))
             // Spawn a big alien ship
-            StartCoroutine(SpawnAlienBig(0.0f));
+            SpawnAlienBig();
 #endif        
     }
 
@@ -127,8 +128,8 @@ public class LevelController : MonoBehaviour {
      * Increases the player's score. Gives extra life if appropriate.
      */
     private void ScorePoints(int points) {
-        int nextRewardLevel = (int) Math.Floor((double) _score / _config.PointsForNewLife) + 1;
-        int pointsForNewLife = (nextRewardLevel * _config.PointsForNewLife);
+        int nextRewardLevel = (int) Math.Floor((double) _score / _config.Points.ForNewLife) + 1;
+        int pointsForNewLife = (nextRewardLevel * _config.Points.ForNewLife);
         _score += points;
         if (_score >= pointsForNewLife) {
             PlaySound("extra_life");
@@ -160,8 +161,11 @@ public class LevelController : MonoBehaviour {
     public void DestroyAlien(AlienController alienController) {
         PlaySound("explosion_alien");
         Destroy(alienController.gameObject);
-        // Spawn four pieces of the spaceship flying off in different directions, then they go away
+        _score += _config.Points.AlienBig;
+        // Spawn pieces of the alien ship flying off in different directions, then they go away
         alienController.GetAlienPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
+        // Spawn a new one
+        _spawnAliensCoroutine = StartCoroutine(SpawnAliens());
     }
 
     /**
@@ -184,9 +188,8 @@ public class LevelController : MonoBehaviour {
         spaceship.transform.eulerAngles = new Vector3(0f, 0f, 90f);
     }
 
-    private IEnumerator SpawnAlienBig(float delay) {
-        yield return new WaitForSeconds(delay);
-        AlienController alien = Instantiate(Resources.Load<AlienController>("Prefabs/AlienBig"));
+    private void SpawnAlienBig() {
+        Instantiate(Resources.Load<AlienController>("Prefabs/AlienBig"));
     }
 
     /**
@@ -219,9 +222,12 @@ public class LevelController : MonoBehaviour {
     }
 
     /**
-     * Start new level L by spawning the correct space rocks
+     * Start new level by spawning the correct space rocks
      */
     private IEnumerator StartLevel() {
+        if (_spawnAliensCoroutine != null) {
+            StopCoroutine(_spawnAliensCoroutine);
+        } 
         yield return new WaitForSeconds(1.0f);
         ShowCenterText("Level " + _level);
         yield return new WaitForSeconds(3.0f);
@@ -232,6 +238,20 @@ public class LevelController : MonoBehaviour {
             SpawnRock("RockBig",
                 Random.Range(0, 1) == 0 ? Util.GetRandomLocationTopEdge() : Util.GetRandomLocationLeftEdge());
         }
+        _spawnAliensCoroutine = StartCoroutine(SpawnAliens());
+    }
+
+    /**
+     * Coroutine to spawn aliens. Wait a configurable number of seconds and then spawn the right alien.
+     * Call this method again when the spaceship is destroyed. As levels proceed, the time between spaceships goes down.
+     */
+    private IEnumerator SpawnAliens() {
+        // Wait a number of seconds before we actually spawn it
+        float delay = Random.Range(_config.SpawnTime.Alien - _level + 1, _config.SpawnTime.Alien - _level + 3);
+        float adjusted = Mathf.Clamp(delay, _config.SpawnTime.WaitAtLeast, _config.SpawnTime.Alien);
+        yield return new WaitForSeconds(adjusted);                
+        // Spawn a big alien
+        SpawnAlienBig();
     }
 
     /**
@@ -243,5 +263,4 @@ public class LevelController : MonoBehaviour {
         rock.GetComponent<RandomDirection>().SpeedBoost = (_level * 0.1f);
         return rock;
     }
-
 }        

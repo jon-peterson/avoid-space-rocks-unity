@@ -5,5 +5,10 @@ Points:
   MediumRock: 10
   SmallRock: 20
   TinyRock: 30
-PointsForNewLife: 10000
+  AlienBig: 300
+  AlienSmall: 1000
+  ForNewLife: 10000
+SpawnTime:
+  Alien: 15.0
+  WaitAtLeast: 2.0
   
