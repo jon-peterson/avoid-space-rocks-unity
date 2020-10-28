@@ -118,6 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1
+  minFireDelay: 1
+  maxFireDelay: 3
 --- !u!50 &-1084807475117836210
 Rigidbody2D:
   serializedVersion: 4
@@ -138,7 +140,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &8493614878051857731
 PolygonCollider2D:
   m_ObjectHideFlags: 0
