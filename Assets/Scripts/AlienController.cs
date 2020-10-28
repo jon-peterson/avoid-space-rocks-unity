@@ -53,6 +53,10 @@ public class AlienController : MonoBehaviour
         }
         // Calculate the velocity that the spaceship needs to hit it
         _rigidbody2D.velocity = (_destination - transform.position) * speed;
+        // Turn on the sound
+        _audioSource.clip = Resources.Load<AudioClip>("Audio/move_alien");;
+        _audioSource.loop = true;
+        _audioSource.Play();
         // Start the shooting coroutine
         StartCoroutine(FireAtSpaceship());
         StartCoroutine(SetSecondDestination());
