@@ -66,16 +66,8 @@ public class AlienController : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other) {
-        RockController rock = other.gameObject.GetComponent<RockController>();
-        if (rock != null) {
-            _levelController.DestroyAlien(this);
-        }
-    }
-
     /**
      * After a pseudo-random delay, fires at the player's spaceship
-     * 
      */
     private IEnumerator FireAtSpaceship() {
         // Wait a random period of time
@@ -113,5 +105,16 @@ public class AlienController : MonoBehaviour
             pieces.Add(piece);
         }
         return pieces;
+    }
+    
+    /**
+     * If this alien runs into the spaceship, destroy them both
+     */
+    public void OnTriggerEnter2D(Collider2D other) {
+        SpaceshipController spaceship = other.gameObject.GetComponent<SpaceshipController>();
+        if (spaceship) {
+            _levelController.DestroySpaceship(spaceship);
+            _levelController.DestroyAlien(this);
+        }
     }
 }

@@ -55,6 +55,9 @@ public class BulletController : MonoBehaviour {
         gameObject.transform.position = alienPos;
     }
 
+    /**
+     * Blow things up if this bullet hits it
+     */
     public void OnTriggerEnter2D(Collider2D other) {
         RockController rock = other.gameObject.GetComponent<RockController>();
         if (rock) {
