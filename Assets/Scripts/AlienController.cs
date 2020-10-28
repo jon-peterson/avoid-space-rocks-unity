@@ -1,5 +1,4 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +13,7 @@ public class AlienController : MonoBehaviour
     [SerializeField] private float maxFireDelay = 3.0f;
     
     private Vector3 _destination;
+    private Vector3 _secondDestination;
     private Rigidbody2D _rigidbody2D;
     private AudioSource _audioSource;
     private AudioClip _audioAlienMove;
@@ -33,24 +33,29 @@ public class AlienController : MonoBehaviour
             case 0:
                 transform.position = Util.GetRandomLocationLeftEdge();
                 _destination = Util.GetRandomLocationRightEdge();
+                _secondDestination = Util.GetRandomLocationRightEdge();
                 break;
             case 1:
                 transform.position = Util.GetRandomLocationRightEdge();
                 _destination = Util.GetRandomLocationLeftEdge();
+                _secondDestination = Util.GetRandomLocationLeftEdge();
                 break;
             case 2:
                 transform.position = Util.GetRandomLocationTopEdge();
                 _destination = Util.GetRandomLocationBottomEdge();
+                _secondDestination = Util.GetRandomLocationBottomEdge();
                 break;
             default:
                 transform.position = Util.GetRandomLocationBottomEdge();
                 _destination = Util.GetRandomLocationTopEdge();
+                _secondDestination = Util.GetRandomLocationTopEdge();
                 break;
         }
         // Calculate the velocity that the spaceship needs to hit it
         _rigidbody2D.velocity = (_destination - transform.position) * speed;
         // Start the shooting coroutine
         StartCoroutine(FireAtSpaceship());
+        StartCoroutine(SetSecondDestination());
     }
     
     void Update()
@@ -85,6 +90,15 @@ public class AlienController : MonoBehaviour
             yield return new WaitForSeconds(bullet.BulletLifetime);
             StartCoroutine(FireAtSpaceship());
         }
+    }
+
+    /**
+     * After a period of time, changes the direction in which it is flying 
+     */
+    private IEnumerator SetSecondDestination() {
+        // Wait a random period of time
+        yield return new WaitForSeconds(Random.Range(minFireDelay+1, maxFireDelay+1));
+        _rigidbody2D.velocity = (_secondDestination - transform.position) * speed;
     }
 
     /**
