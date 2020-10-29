@@ -21,6 +21,7 @@ public class LevelController : MonoBehaviour {
     private int _lives;
     private int _score;
     private int _level;
+    private int _aliens;
     private AudioSource _audioSource;
     private Coroutine _spawnAliensCoroutine;
 
@@ -31,6 +32,7 @@ public class LevelController : MonoBehaviour {
     void Start() {
         _config = LoadGameConfig();
         _lives = _config.StartingLives;
+        _aliens = 0;
         _score = 0;
         _level = 1;
         _hudCanvas = GameObject.FindGameObjectWithTag("HUDCanvas").GetComponent<Canvas>();
@@ -46,6 +48,10 @@ public class LevelController : MonoBehaviour {
     }
 
     void Update() {
+        if (ShouldStartNewLevel()) {
+            _level++;
+            StartCoroutine(StartLevel());
+        }
 #if UNITY_EDITOR	
         if (Input.GetKeyDown("0")) {
             // Call destroy rock for every rock. Spawns the children and stuff
@@ -108,7 +114,7 @@ public class LevelController : MonoBehaviour {
                 ScorePoints(_config.Points.SmallRock);
                 PlaySound("explosion_small");
                 if(_level > 3)
-                    SpawnChildRocks("RockTiny", pieces + 1, rock.transform.position);
+                    SpawnChildRocks("RockTiny", pieces - 1, rock.transform.position);
                 break;
             case Size.Tiny:
             default:
@@ -118,10 +124,13 @@ public class LevelController : MonoBehaviour {
         }
         Destroy(rock.gameObject);
         _rocks--;
-        if (_rocks <= 0) {
-            _level++;
-            StartCoroutine(StartLevel());
-        }
+    }
+
+    /**
+     * Return true if we should start a new level
+     */
+    private bool ShouldStartNewLevel() {
+        return _rocks <= 0 && _aliens <= 0;
     }
 
     /**
@@ -162,6 +171,7 @@ public class LevelController : MonoBehaviour {
         PlaySound("explosion_alien");
         Destroy(alienController.gameObject);
         _score += _config.Points.AlienBig;
+        _aliens--;
         // Spawn pieces of the alien ship flying off in different directions, then they go away
         alienController.GetAlienPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
         // Spawn a new one
@@ -188,7 +198,8 @@ public class LevelController : MonoBehaviour {
         spaceship.transform.eulerAngles = new Vector3(0f, 0f, 90f);
     }
 
-    private void SpawnAlienBig() {
+    private void SpawnAlienBig() { 
+        _aliens++;
         Instantiate(Resources.Load<AlienController>("Prefabs/AlienBig"));
     }
 
@@ -225,6 +236,8 @@ public class LevelController : MonoBehaviour {
      * Start new level by spawning the correct space rocks
      */
     private IEnumerator StartLevel() {
+        _rocks = (int)Math.Floor(_level / 2.0f) + 2;
+        _aliens = 0;
         if (_spawnAliensCoroutine != null) {
             StopCoroutine(_spawnAliensCoroutine);
         } 
@@ -233,7 +246,6 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
-        _rocks = (int)Math.Floor(_level / 2.0f) + 2;
         for (int i = 0; i < _rocks; i++) {
             SpawnRock("RockBig",
                 Random.Range(0, 1) == 0 ? Util.GetRandomLocationTopEdge() : Util.GetRandomLocationLeftEdge());
