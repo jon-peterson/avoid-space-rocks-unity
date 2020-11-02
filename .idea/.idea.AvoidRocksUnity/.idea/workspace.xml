@@ -22,13 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Refactor where collision logic lives&#10;&#10;The thing that is doing the blowing up has the code">
+    <list default="true" id="14a95e70-1568-4e99-a605-95361e88157d" name="Default Changelist" comment="Improve end-of-level logic">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AvoidRocksUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Audio/explosion_alien.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Audio/explosion_alien.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Audio/explosion_ship.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Audio/explosion_ship.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Audio/fire_alien.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Audio/fire_alien.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Audio/hyperspace.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Audio/hyperspace.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AlienController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AlienController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AttractModeScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AttractModeScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AttractModeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AttractModeController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,44 +36,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/39/7fa0c42b/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/Util.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/51/13b7f1d8/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/8d/a10718aa/Object.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/AlienController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CAB14A-C59E-4552-B77F-98A4AED18F9E/a8/ee93a31a/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/AlienController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/GameConfig.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/AlienBig.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AlienController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/0f/69c624f8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/AlienBig.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/AlienBig.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FB001E01-371B-4ADC-A200-13E0AC763896/17/419624de/Math.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/AlienBig.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/AlienBig.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/AlienController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/Util.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/BulletController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/BC2876E8-FF0B-42A2-A2A1-1B51F2B23C8A/51/13b7f1d8/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/8d/a10718aa/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/65CAB14A-C59E-4552-B77F-98A4AED18F9E/a8/ee93a31a/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/79/cbad9530/Screen.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/AlienBig.prefab" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/AlienController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AlienController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/37/ee59fbd2/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/0f/69c624f8/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/AlienController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Resources/Prefabs/Spaceship.prefab" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EE47BE73-F7EF-409C-A5E5-CE4B121745B7/d1/46dc56a7/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/SpaceshipController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameConfig.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/Util.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Scripts/LevelController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -86,31 +58,32 @@
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockMedium.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockBig.prefab" />
         <option value="$PROJECT_DIR$/Assets/Resources/Prefabs/RockSmall.prefab" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AttractModeController.cs" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Assets/Scripts/WraparoundMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RandomDirection.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameConfig.cs" />
         <option value="$PROJECT_DIR$/Assets/Resources/Config/game-configuration.yaml" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Util.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/SpaceshipController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BulletController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RockController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AlienController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LevelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AttractModeController.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1h6AisC8K7hYGeaHhJMZgwy8uvs" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.4641577" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.24283154" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.46499103" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.2432675" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -136,10 +109,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10444">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="10288">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="10444" />
+      <option name="pid" value="10288" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -167,21 +140,8 @@
       <workItem from="1602504158990" duration="11297000" />
       <workItem from="1602952146399" duration="906000" />
       <workItem from="1602953073152" duration="5996000" />
-      <workItem from="1603034704850" duration="29095000" />
-    </task>
-    <task id="LOCAL-00019" summary="Fix bullet shooting">
-      <created>1600176656870</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1600176656870</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Tweak speeds and so on">
-      <created>1600176773446</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1600176773446</updated>
+      <workItem from="1603034704850" duration="29825000" />
+      <workItem from="1603985069903" duration="5995000" />
     </task>
     <task id="LOCAL-00021" summary="Ignore the .idea workspace files">
       <created>1600176946255</created>
@@ -512,7 +472,21 @@
       <option name="project" value="LOCAL" />
       <updated>1603892461902</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Make sounds less silly">
+      <created>1603893719817</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1603893719817</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Improve end-of-level logic">
+      <created>1604009564761</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1604009564761</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
@@ -531,8 +505,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Tune: Slower spaceship and rocks (with random boost)" />
-    <MESSAGE value="Add yaml library; read game config from file" />
     <MESSAGE value="Configurable points for destroying rocks" />
     <MESSAGE value="Grant extra life every X points" />
     <MESSAGE value="Util now returns world space; enable hyperspace feature" />
@@ -556,7 +528,9 @@
     <MESSAGE value="Aliens change direction when flying" />
     <MESSAGE value="Aliens should not rotate" />
     <MESSAGE value="Refactor where collision logic lives&#10;&#10;The thing that is doing the blowing up has the code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor where collision logic lives&#10;&#10;The thing that is doing the blowing up has the code" />
+    <MESSAGE value="Make sounds less silly" />
+    <MESSAGE value="Improve end-of-level logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improve end-of-level logic" />
   </component>
   <component name="WindowStateProjectService">
     <state x="702" y="321" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599322391979">
@@ -567,70 +541,70 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603891605957" />
-    <state width="1147" height="304" key="GridCell.Tab.0.bottom" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.0.bottom" timestamp="1604329122876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.0.center" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122876" />
+    <state width="1145" height="304" key="GridCell.Tab.0.center" timestamp="1604329122876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.0.left" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122876" />
+    <state width="1145" height="304" key="GridCell.Tab.0.left" timestamp="1604329122876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.0.right" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122876" />
+    <state width="1145" height="304" key="GridCell.Tab.0.right" timestamp="1604329122876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.1.bottom" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122876" />
+    <state width="1145" height="304" key="GridCell.Tab.1.bottom" timestamp="1604329173504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.1.center" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604329173504" />
+    <state width="1145" height="304" key="GridCell.Tab.1.center" timestamp="1604329173504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.1.left" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604329173504" />
+    <state width="1145" height="304" key="GridCell.Tab.1.left" timestamp="1604329173504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.1.right" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604329173504" />
+    <state width="1145" height="304" key="GridCell.Tab.1.right" timestamp="1604329173504">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.2.bottom" timestamp="1603805975703">
+    <state width="1145" height="304" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604329173504" />
+    <state width="1145" height="304" key="GridCell.Tab.2.bottom" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975703" />
-    <state width="1147" height="304" key="GridCell.Tab.2.center" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
+    <state width="1145" height="304" key="GridCell.Tab.2.center" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.2.left" timestamp="1603805975702">
+    <state width="1145" height="304" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
+    <state width="1145" height="304" key="GridCell.Tab.2.left" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975702" />
-    <state width="1147" height="304" key="GridCell.Tab.2.right" timestamp="1603805975703">
+    <state width="1145" height="304" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
+    <state width="1145" height="304" key="GridCell.Tab.2.right" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975703" />
-    <state width="1147" height="304" key="GridCell.Tab.3.bottom" timestamp="1603805975703">
+    <state width="1145" height="304" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
+    <state width="1145" height="304" key="GridCell.Tab.3.bottom" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975703" />
-    <state width="1147" height="304" key="GridCell.Tab.3.center" timestamp="1603805975703">
+    <state width="1145" height="304" key="GridCell.Tab.3.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
+    <state width="1145" height="304" key="GridCell.Tab.3.center" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975703" />
-    <state width="1147" height="304" key="GridCell.Tab.3.left" timestamp="1603805975703">
+    <state width="1145" height="304" key="GridCell.Tab.3.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
+    <state width="1145" height="304" key="GridCell.Tab.3.left" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975703" />
-    <state width="1147" height="304" key="GridCell.Tab.3.right" timestamp="1603805975703">
+    <state width="1145" height="304" key="GridCell.Tab.3.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
+    <state width="1145" height="304" key="GridCell.Tab.3.right" timestamp="1604329122627">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1147" height="304" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603805975703" />
+    <state width="1145" height="304" key="GridCell.Tab.3.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604329122627" />
     <state x="744" y="230" key="RollbackChangesDialog" timestamp="1603891015014">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -643,10 +617,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1603036823617" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1603892463282">
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1604008826565">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1603892463282" />
+    <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604008826565" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1604009566821">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1604009566821" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603036990563">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -655,10 +633,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="729" y="254" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1600696049223" />
-    <state x="637" y="119" width="646" height="801" key="find.popup" timestamp="1603155199816">
+    <state x="637" y="119" width="646" height="801" key="find.popup" timestamp="1604008643579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="637" y="119" width="646" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603155199816" />
+    <state x="637" y="119" width="646" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604008643579" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602506308351">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
