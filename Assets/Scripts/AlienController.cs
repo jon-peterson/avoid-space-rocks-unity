@@ -66,7 +66,7 @@ public class AlienController : MonoBehaviour
     {
         // If this spaceship is near its destination, safe to kill it
         if (Util.IsOutsideWorldspace(transform.position)) {
-            Destroy(gameObject);
+            _levelController.OnAlienGone(this);
         }
     }
 

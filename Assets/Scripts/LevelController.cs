@@ -62,6 +62,9 @@ public class LevelController : MonoBehaviour {
         if (Input.GetKeyDown("1"))
             // Spawn a big alien ship
             SpawnAlienBig();
+        if (Input.GetKeyDown("2"))
+            // Spawn a small alien ship
+            SpawnAlienSmall();
 #endif        
     }
 
@@ -169,12 +172,18 @@ public class LevelController : MonoBehaviour {
      */
     public void DestroyAlien(AlienController alienController) {
         PlaySound("explosion_alien");
-        Destroy(alienController.gameObject);
         _score += _config.Points.AlienBig;
-        _aliens--;
         // Spawn pieces of the alien ship flying off in different directions, then they go away
         alienController.GetAlienPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
-        // Spawn a new one
+        OnAlienGone(alienController);
+    }
+
+    /**
+     * Cleans up after the alien is either destroyed or flies off into space
+     */
+    public void OnAlienGone(AlienController alienController) {
+        Destroy(alienController.gameObject);
+        _aliens++;
         _spawnAliensCoroutine = StartCoroutine(SpawnAliens());
     }
 
@@ -201,6 +210,11 @@ public class LevelController : MonoBehaviour {
     private void SpawnAlienBig() { 
         _aliens++;
         Instantiate(Resources.Load<AlienController>("Prefabs/AlienBig"));
+    }
+
+    private void SpawnAlienSmall() { 
+        _aliens++;
+        Instantiate(Resources.Load<AlienController>("Prefabs/AlienSmall"));
     }
 
     /**
