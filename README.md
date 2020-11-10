@@ -1,1 +1,1 @@
-An Astroids clone written in Unity.
+An Asteroids clone written in Unity.
