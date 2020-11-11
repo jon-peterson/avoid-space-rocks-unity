@@ -183,7 +183,7 @@ public class LevelController : MonoBehaviour {
      */
     public void OnAlienGone(AlienController alienController) {
         Destroy(alienController.gameObject);
-        _aliens++;
+        _aliens--;
         _spawnAliensCoroutine = StartCoroutine(SpawnAliens());
     }
 
