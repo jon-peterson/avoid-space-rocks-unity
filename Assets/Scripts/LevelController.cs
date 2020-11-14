@@ -18,12 +18,11 @@ public class LevelController : MonoBehaviour {
     private Vector3 _screenDimensions;
     private GameConfig _config;
     private int _rocks;
-    private int _lives;
-    private int _score;
-    private int _level;
     private int _aliens;
     private AudioSource _audioSource;
     private Coroutine _spawnAliensCoroutine;
+
+    [SerializeField] private GameStatus gameStatus;
 
     void Awake() {
         _audioSource = gameObject.AddComponent<AudioSource>();
@@ -31,10 +30,9 @@ public class LevelController : MonoBehaviour {
     
     void Start() {
         _config = LoadGameConfig();
-        _lives = _config.StartingLives;
+        gameStatus.Reset();
+        _rocks = 0;
         _aliens = 0;
-        _score = 0;
-        _level = 1;
         _hudCanvas = GameObject.FindGameObjectWithTag("HUDCanvas").GetComponent<Canvas>();
         _scoreText = _hudCanvas.transform.Find("ScoreText").gameObject.GetComponent<Text>();
         _livesUI = _hudCanvas.transform.Find("Lives").gameObject;
@@ -49,7 +47,7 @@ public class LevelController : MonoBehaviour {
 
     void Update() {
         if (ShouldStartNewLevel()) {
-            _level++;
+            gameStatus.Level++;
             StartCoroutine(StartLevel());
         }
 #if UNITY_EDITOR	
@@ -72,18 +70,18 @@ public class LevelController : MonoBehaviour {
      * Sets the score and number of lives in the HUD 
      */
     private void UpdateHUD() {
-        _scoreText.text = _score.ToString("#,##0");
+        _scoreText.text = gameStatus.Score.ToString("#,##0");
         int existingShipIcons = _livesUI.transform.childCount; 
-        if (existingShipIcons < _lives) {
+        if (existingShipIcons < gameStatus.Lives) {
             // Add child icons until they match
-            for (int i = existingShipIcons; i < Math.Min(_lives, 20); i++) {
+            for (int i = existingShipIcons; i < Math.Min(gameStatus.Lives, 20); i++) {
                 GameObject icon = Instantiate(Resources.Load("Prefabs/LifeIcon", typeof(GameObject)), _livesUI.transform) as GameObject;
                 Vector3 ori = icon.transform.position;
                 icon.transform.position = new Vector3(ori.x - (20.0f * i), ori.y, ori.z);
             }
-        } else if (existingShipIcons > _lives) {
+        } else if (existingShipIcons > gameStatus.Lives) {
             // Drop children icons until they match
-            for (int i = existingShipIcons; i > _lives; i--) {
+            for (int i = existingShipIcons; i > gameStatus.Lives; i--) {
                 Destroy(_livesUI.transform.GetChild(i-1).gameObject);
             }
         }
@@ -100,7 +98,7 @@ public class LevelController : MonoBehaviour {
      * Destroy the passed-in rock, spawning new smaller ones as needed. Increases score.
      */
     public void DestroyRock(RockController rock) {
-        int pieces = (int)Math.Floor(_level / 4.0f) + 2;
+        int pieces = (int)Math.Floor(gameStatus.Level / 4.0f) + 2;
         switch (rock.Size) {
             case Size.Large:
                 ScorePoints(_config.Points.LargeRock);
@@ -110,13 +108,13 @@ public class LevelController : MonoBehaviour {
             case Size.Medium:
                 ScorePoints(_config.Points.MediumRock);
                 PlaySound("explosion_medium");
-                if(_level > 1)
+                if(gameStatus.Level > 1)
                     SpawnChildRocks("RockSmall", pieces, rock.transform.position);
                 break;
             case Size.Small:
                 ScorePoints(_config.Points.SmallRock);
                 PlaySound("explosion_small");
-                if(_level > 3)
+                if(gameStatus.Level > 3)
                     SpawnChildRocks("RockTiny", pieces - 1, rock.transform.position);
                 break;
             case Size.Tiny:
@@ -140,12 +138,12 @@ public class LevelController : MonoBehaviour {
      * Increases the player's score. Gives extra life if appropriate.
      */
     private void ScorePoints(int points) {
-        int nextRewardLevel = (int) Math.Floor((double) _score / _config.Points.ForNewLife) + 1;
+        int nextRewardLevel = (int) Math.Floor((double) gameStatus.Score / _config.Points.ForNewLife) + 1;
         int pointsForNewLife = (nextRewardLevel * _config.Points.ForNewLife);
-        _score += points;
-        if (_score >= pointsForNewLife) {
+        gameStatus.Score += points;
+        if (gameStatus.Score >= pointsForNewLife) {
             PlaySound("extra_life");
-            _lives += 1;
+            gameStatus.Lives += 1;
         }
         UpdateHUD();
     }
@@ -158,9 +156,9 @@ public class LevelController : MonoBehaviour {
         Destroy(spaceshipController.gameObject);
         // Spawn four pieces of the spaceship flying off in different directions, then they go away
         spaceshipController.GetSpaceshipPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
-        _lives--;
+        gameStatus.Lives--;
         UpdateHUD();
-        if (_lives > 0) {
+        if (gameStatus.Lives > 0) {
             StartCoroutine(SpawnSpaceship(3.0f));
         } else {
             StartCoroutine(GameOver());
@@ -172,7 +170,7 @@ public class LevelController : MonoBehaviour {
      */
     public void DestroyAlien(AlienController alienController) {
         PlaySound("explosion_alien");
-        _score += _config.Points.AlienBig;
+        gameStatus.Score += _config.Points.AlienBig;
         // Spawn pieces of the alien ship flying off in different directions, then they go away
         alienController.GetAlienPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
         OnAlienGone(alienController);
@@ -250,13 +248,13 @@ public class LevelController : MonoBehaviour {
      * Start new level by spawning the correct space rocks
      */
     private IEnumerator StartLevel() {
-        _rocks = (int)Math.Floor(_level / 2.0f) + 2;
+        _rocks = (int)Math.Floor(gameStatus.Level / 2.0f) + 2;
         _aliens = 0;
         if (_spawnAliensCoroutine != null) {
             StopCoroutine(_spawnAliensCoroutine);
         } 
         yield return new WaitForSeconds(1.0f);
-        ShowCenterText("Level " + _level);
+        ShowCenterText("Level " + gameStatus.Level);
         yield return new WaitForSeconds(3.0f);
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
@@ -273,7 +271,9 @@ public class LevelController : MonoBehaviour {
      */
     private IEnumerator SpawnAliens() {
         // Wait a number of seconds before we actually spawn it
-        float delay = Random.Range(_config.SpawnTime.Alien - _level + 1, _config.SpawnTime.Alien - _level + 3);
+        float delay = Random.Range(
+            _config.SpawnTime.Alien - gameStatus.Level + 1,
+            _config.SpawnTime.Alien - gameStatus.Level + 3);
         float adjusted = Mathf.Clamp(delay, _config.SpawnTime.WaitAtLeast, _config.SpawnTime.Alien);
         yield return new WaitForSeconds(adjusted);                
         // Spawn a big alien
@@ -286,7 +286,7 @@ public class LevelController : MonoBehaviour {
     private GameObject SpawnRock(String type, Vector2 position) {
         GameObject rock = Instantiate(Resources.Load("Prefabs/" + type, typeof(GameObject))) as GameObject;
         rock.transform.position = position;
-        rock.GetComponent<RandomDirection>().SpeedBoost = (_level * 0.1f);
+        rock.GetComponent<RandomDirection>().SpeedBoost = (gameStatus.Level * 0.1f);
         return rock;
     }
 }        
