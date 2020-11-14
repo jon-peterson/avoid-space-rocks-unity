@@ -56,10 +56,10 @@ public class AlienController : MonoBehaviour
                 _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationTopEdge();
                 break;
         }
-        // Calculate the velocity that the spaceship needs to hit it
-        _rigidbody2D.velocity = (_destination - transform.position) * _speed;
+        // Point the alien at the new location at its appropriate speed
+        _rigidbody2D.velocity = Vector3.Normalize(_destination - transform.position) * _speed;
         // Turn on the sound
-        _audioSource.clip = Resources.Load<AudioClip>("Audio/move_alien");;
+        _audioSource.clip = Resources.Load<AudioClip>("Audio/move_alien");
         _audioSource.loop = true;
         _audioSource.Play();
         // Start the shooting coroutine
@@ -99,7 +99,7 @@ public class AlienController : MonoBehaviour
     private IEnumerator SetSecondDestination() {
         // Wait a random period of time
         yield return new WaitForSeconds(Random.Range(_minFireDelay+1, _maxFireDelay+1));
-        _rigidbody2D.velocity = (_secondDestination - transform.position) * _speed;
+        _rigidbody2D.velocity = Vector3.Normalize(_secondDestination - transform.position) * _speed;
     }
 
     /**
