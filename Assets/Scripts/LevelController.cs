@@ -15,10 +15,17 @@ public class LevelController : MonoBehaviour {
     private Text _centerText;
     private GameObject _livesUI;
     private Vector3 _screenDimensions;
-    private int _rocks;
-    private int _aliens;
     private AudioSource _audioSource;
     private Coroutine _spawnAliensCoroutine;
+
+    // The number of rocks currently in the playfield
+    private int _rocks;
+    
+    // The number of aliens currently in the playfield
+    private int _aliens;
+
+    // The number of aliens spawned during this level total
+    private int _aliensSpawned; 
 
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private GameStatus _gameStatus;
@@ -29,8 +36,6 @@ public class LevelController : MonoBehaviour {
     
     void Start() {
         _gameStatus.Reset();
-        _rocks = 0;
-        _aliens = 0;
         _hudCanvas = GameObject.FindGameObjectWithTag("HUDCanvas").GetComponent<Canvas>();
         _scoreText = _hudCanvas.transform.Find("ScoreText").gameObject.GetComponent<Text>();
         _livesUI = _hudCanvas.transform.Find("Lives").gameObject;
@@ -205,11 +210,13 @@ public class LevelController : MonoBehaviour {
 
     private void SpawnAlienBig() { 
         _aliens++;
+        _aliensSpawned++;
         Instantiate(Resources.Load<AlienController>("Prefabs/AlienBig"));
     }
 
     private void SpawnAlienSmall() { 
         _aliens++;
+        _aliensSpawned++;
         Instantiate(Resources.Load<AlienController>("Prefabs/AlienSmall"));
     }
 
@@ -241,6 +248,7 @@ public class LevelController : MonoBehaviour {
     private IEnumerator StartLevel() {
         _rocks = (int)Math.Floor(_gameStatus.Level / 2.0f) + 2;
         _aliens = 0;
+        _aliensSpawned = 0;
         if (_spawnAliensCoroutine != null) {
             StopCoroutine(_spawnAliensCoroutine);
         } 
@@ -266,9 +274,12 @@ public class LevelController : MonoBehaviour {
             _gameConfig.SpawnTime.alien - _gameStatus.Level + 1,
             _gameConfig.SpawnTime.alien - _gameStatus.Level + 3);
         float adjusted = Mathf.Clamp(delay, _gameConfig.SpawnTime.waitAtLeast, _gameConfig.SpawnTime.alien);
-        yield return new WaitForSeconds(adjusted);                
-        // Spawn a big alien
-        SpawnAlienBig();
+        yield return new WaitForSeconds(adjusted);
+        if (_aliensSpawned <= (4 - _gameStatus.Level)) { 
+            SpawnAlienBig();
+        } else {
+            SpawnAlienSmall();
+        }
     }
 
     /**
