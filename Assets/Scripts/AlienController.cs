@@ -1,16 +1,21 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AlienController : MonoBehaviour
 {
     // How fast the ship moves
-    [SerializeField] private float speed = 3.0f;
-    [SerializeField] private float minFireDelay = 1.0f;
-    [SerializeField] private float maxFireDelay = 3.0f;
+    [SerializeField] private float _speed = 0.1f;
+    [SerializeField] private float _minFireDelay = 1.0f;
+    [SerializeField] private float _maxFireDelay = 3.0f;
+    [SerializeField] private float _bulletDrift = 1.0f;
+    [SerializeField] private bool _erraticMovement = false;
     
     private Vector3 _destination;
     private Vector3 _secondDestination;
@@ -33,26 +38,26 @@ public class AlienController : MonoBehaviour
             case 0:
                 transform.position = Util.GetRandomLocationLeftEdge();
                 _destination = Util.GetRandomLocationRightEdge();
-                _secondDestination = Util.GetRandomLocationRightEdge();
+                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationRightEdge();
                 break;
             case 1:
                 transform.position = Util.GetRandomLocationRightEdge();
                 _destination = Util.GetRandomLocationLeftEdge();
-                _secondDestination = Util.GetRandomLocationLeftEdge();
+                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationLeftEdge();
                 break;
             case 2:
                 transform.position = Util.GetRandomLocationTopEdge();
                 _destination = Util.GetRandomLocationBottomEdge();
-                _secondDestination = Util.GetRandomLocationBottomEdge();
+                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationBottomEdge();
                 break;
             default:
                 transform.position = Util.GetRandomLocationBottomEdge();
                 _destination = Util.GetRandomLocationTopEdge();
-                _secondDestination = Util.GetRandomLocationTopEdge();
+                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationTopEdge();
                 break;
         }
         // Calculate the velocity that the spaceship needs to hit it
-        _rigidbody2D.velocity = (_destination - transform.position) * speed;
+        _rigidbody2D.velocity = (_destination - transform.position) * _speed;
         // Turn on the sound
         _audioSource.clip = Resources.Load<AudioClip>("Audio/move_alien");;
         _audioSource.loop = true;
@@ -75,13 +80,13 @@ public class AlienController : MonoBehaviour
      */
     private IEnumerator FireAtSpaceship() {
         // Wait a random period of time
-        yield return new WaitForSeconds(Random.Range(minFireDelay, maxFireDelay));
+        yield return new WaitForSeconds(Random.Range(_minFireDelay, _maxFireDelay));
         // Fire a bullet at the player, if the spaceship is still around
         GameObject spaceship = GameObject.FindWithTag("Player");
         if (spaceship != null) {
             _levelController.PlaySound("fire_alien");
             BulletController bullet = Instantiate(Resources.Load<BulletController>("Prefabs/Bullet"));
-            bullet.InitializeFromAlien(this, spaceship.GetComponent<SpaceshipController>(), 1.0f);
+            bullet.InitializeFromAlien(this, spaceship.GetComponent<SpaceshipController>(), _bulletDrift);
             // Wait for the bullet to finish, then shoot again
             yield return new WaitForSeconds(bullet.BulletLifetime);
             StartCoroutine(FireAtSpaceship());
@@ -93,8 +98,8 @@ public class AlienController : MonoBehaviour
      */
     private IEnumerator SetSecondDestination() {
         // Wait a random period of time
-        yield return new WaitForSeconds(Random.Range(minFireDelay+1, maxFireDelay+1));
-        _rigidbody2D.velocity = (_secondDestination - transform.position) * speed;
+        yield return new WaitForSeconds(Random.Range(_minFireDelay+1, _maxFireDelay+1));
+        _rigidbody2D.velocity = (_secondDestination - transform.position) * _speed;
     }
 
     /**

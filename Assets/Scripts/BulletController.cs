@@ -40,13 +40,13 @@ public class BulletController : MonoBehaviour {
     }
 
     /**
-     * Called when an Alien fires the bullet: point the bullet where the spaceship is now. Lower loose numbers
-     * are better -- a loose of zero shoots directly at where the spaceship is now; a higher loose means further
+     * Called when an Alien fires the bullet: point the bullet where the spaceship is now. Lower drift numbers
+     * are better -- a drift of zero shoots directly at where the spaceship is now; a higher drift means further
      * away from the spaceship, in unit terms, but random.
      */
-    public void InitializeFromAlien(AlienController alien, SpaceshipController spaceship, float loose) {
-        float wiggleX = Random.Range(-loose, loose);
-        float wiggleY = Random.Range(-loose, loose);
+    public void InitializeFromAlien(AlienController alien, SpaceshipController spaceship, float drift) {
+        float wiggleX = Random.Range(-drift, drift);
+        float wiggleY = Random.Range(-drift, drift);
         Vector2 alienPos = alien.transform.position;
         Vector2 spaceshipPos = spaceship.transform.position;
         Vector2 targetPos = new Vector2(spaceshipPos.x + wiggleX, spaceshipPos.y + wiggleY);

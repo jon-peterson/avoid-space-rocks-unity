@@ -117,9 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 129bb82c9bcddbe48b9eaf0b81ce7cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
-  minFireDelay: 1
-  maxFireDelay: 3
+  _speed: 0.2
+  _minFireDelay: 0.5
+  _maxFireDelay: 1.5
+  _bulletDrift: 0.5
+  _erraticMovement: 1
 --- !u!50 &-2372491618378953603
 Rigidbody2D:
   serializedVersion: 4
