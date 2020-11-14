@@ -58,18 +58,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ScriptableObjects\GameConfig.cs" />
+     <Compile Include="Assets\ScriptableObjects\GameStatus.cs" />
      <Compile Include="Assets\Scripts\AlienController.cs" />
      <Compile Include="Assets\Scripts\AttractModeController.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
-     <Compile Include="Assets\Scripts\GameConfig.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\RandomDirection.cs" />
      <Compile Include="Assets\Scripts\RockController.cs" />
      <Compile Include="Assets\Scripts\SpaceshipController.cs" />
      <Compile Include="Assets\Scripts\Util.cs" />
      <Compile Include="Assets\Scripts\WraparoundMovement.cs" />
-     <None Include="Assets\Packages\YamlDotNet.8.1.2\lib\netstandard1.3\YamlDotNet.xml" />
-     <None Include="Assets\Packages\YamlDotNet.8.1.2\LICENSE.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -327,9 +326,6 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.9f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
- </Reference>
- <Reference Include="YamlDotNet">
- <HintPath>C:/Users/jon/docs/Workspaces/AvoidRocksUnity/Assets/Packages/YamlDotNet.8.1.2/lib/netstandard1.3/YamlDotNet.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.9f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
