@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\AlienController.cs" />
      <Compile Include="Assets\Scripts\AttractModeController.cs" />
      <Compile Include="Assets\Scripts\BulletController.cs" />
+     <Compile Include="Assets\Scripts\HighScoreSceneController.cs" />
      <Compile Include="Assets\Scripts\LevelController.cs" />
      <Compile Include="Assets\Scripts\RandomDirection.cs" />
      <Compile Include="Assets\Scripts\RockController.cs" />

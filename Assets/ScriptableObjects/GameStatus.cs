@@ -21,6 +21,10 @@ public class GameStatus : ScriptableObject {
         set => level = value;
     }
 
+    public void Awake() {
+        
+    }
+
     public void Reset() {
         score = 0;
         lives = 3;

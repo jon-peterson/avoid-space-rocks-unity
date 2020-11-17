@@ -231,7 +231,7 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("AttractModeScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
     }
 
     private void ShowCenterText(String c) {
