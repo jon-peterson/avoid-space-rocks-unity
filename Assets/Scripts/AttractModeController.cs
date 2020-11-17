@@ -21,9 +21,9 @@ public class AttractModeController : MonoBehaviour {
         while (true) {
             for (int i = 0; i < _textContainers.Count; i++) {
                 _textContainers[i].gameObject.SetActive(true);
-                yield return new WaitForSeconds(6.0f);
+                yield return new WaitForSeconds(4.0f);
                 _textContainers[i].gameObject.SetActive(false);
-                yield return new WaitForSeconds(1.0f);
+                yield return new WaitForSeconds(0.75f);
             }
         }
     }
