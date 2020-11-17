@@ -1,6 +1,5 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,16 +9,16 @@ public enum AlienSize {
     Big, Small
 }
 
+// Component that controls an Alien spacecraft in the playfield
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AlienController : MonoBehaviour
 {
-    // How fast the ship moves
-    [SerializeField] private float _speed;
-    [SerializeField] private float _minFireDelay;
-    [SerializeField] private float _maxFireDelay;
-    [SerializeField] private float _bulletDrift;
-    [SerializeField] private AlienSize _size;
+    [SerializeField] private float _speed = default;
+    [SerializeField] private float _minFireDelay = default;
+    [SerializeField] private float _maxFireDelay = default;
+    [SerializeField] private float _bulletDrift = default;
+    [SerializeField] private AlienSize _size = default;
     
     private Vector3 _destination;
     private Vector3 _secondDestination;
