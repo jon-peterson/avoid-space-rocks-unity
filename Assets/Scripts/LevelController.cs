@@ -173,7 +173,9 @@ public class LevelController : MonoBehaviour {
      */
     public void DestroyAlien(AlienController alienController) {
         PlaySound("explosion_alien");
-        _gameStatus.Score += _gameConfig.Points.alienBig;
+        ScorePoints(alienController.Size == AlienSize.Big
+            ? _gameConfig.Points.alienBig
+            : _gameConfig.Points.alienSmall);
         // Spawn pieces of the alien ship flying off in different directions, then they go away
         alienController.GetAlienPieces().ForEach(piece => Destroy(piece, Random.Range(1.5f, 3.0f)));
         OnAlienGone(alienController);

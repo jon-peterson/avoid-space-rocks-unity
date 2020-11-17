@@ -6,16 +6,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+public enum AlienSize {
+    Big, Small
+}
+
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class AlienController : MonoBehaviour
 {
     // How fast the ship moves
-    [SerializeField] private float _speed = 0.1f;
-    [SerializeField] private float _minFireDelay = 1.0f;
-    [SerializeField] private float _maxFireDelay = 3.0f;
-    [SerializeField] private float _bulletDrift = 1.0f;
-    [SerializeField] private bool _erraticMovement = false;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _minFireDelay;
+    [SerializeField] private float _maxFireDelay;
+    [SerializeField] private float _bulletDrift;
+    [SerializeField] private AlienSize _size;
     
     private Vector3 _destination;
     private Vector3 _secondDestination;
@@ -24,13 +28,14 @@ public class AlienController : MonoBehaviour
     private AudioClip _audioAlienMove;
     private LevelController _levelController;
 
+    public AlienSize Size => _size;
+    
     void Awake() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _audioSource = gameObject.AddComponent<AudioSource>();
     }
-    
-    void Start()
-    {
+
+    void Start() {
         _levelController = Util.GetLevelController();
         // Start randomly on one of the four sides going to the opposite side
         int fourSidedCoinFlip = Random.Range(0, 3);
@@ -38,28 +43,38 @@ public class AlienController : MonoBehaviour
             case 0:
                 transform.position = Util.GetRandomLocationLeftEdge();
                 _destination = Util.GetRandomLocationRightEdge();
-                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationRightEdge();
+                _secondDestination = _size == AlienSize.Small
+                    ? Util.GetRandomLocation()
+                    : Util.GetRandomLocationRightEdge();
                 break;
             case 1:
                 transform.position = Util.GetRandomLocationRightEdge();
                 _destination = Util.GetRandomLocationLeftEdge();
-                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationLeftEdge();
+                _secondDestination = _size == AlienSize.Small
+                    ? Util.GetRandomLocation()
+                    : Util.GetRandomLocationLeftEdge();
                 break;
             case 2:
                 transform.position = Util.GetRandomLocationTopEdge();
                 _destination = Util.GetRandomLocationBottomEdge();
-                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationBottomEdge();
+                _secondDestination = _size == AlienSize.Small
+                    ? Util.GetRandomLocation()
+                    : Util.GetRandomLocationBottomEdge();
                 break;
             default:
                 transform.position = Util.GetRandomLocationBottomEdge();
                 _destination = Util.GetRandomLocationTopEdge();
-                _secondDestination = _erraticMovement ? Util.GetRandomLocation() : Util.GetRandomLocationTopEdge();
+                _secondDestination = _size == AlienSize.Small
+                    ? Util.GetRandomLocation()
+                    : Util.GetRandomLocationTopEdge();
                 break;
         }
+
         // Point the alien at the new location at its appropriate speed
         _rigidbody2D.velocity = Vector3.Normalize(_destination - transform.position) * _speed;
         // Turn on the sound
-        _audioSource.clip = Resources.Load<AudioClip>("Audio/move_alien");
+        _audioSource.clip =
+            Resources.Load<AudioClip>(_size == AlienSize.Small ? "Audio/move_alien_small" : "Audio/move_alien_big");
         _audioSource.loop = true;
         _audioSource.Play();
         // Start the shooting coroutine

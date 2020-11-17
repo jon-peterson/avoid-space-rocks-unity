@@ -121,7 +121,7 @@ MonoBehaviour:
   _minFireDelay: 0.5
   _maxFireDelay: 1.5
   _bulletDrift: 0.5
-  _erraticMovement: 1
+  _size: 1
 --- !u!50 &-2372491618378953603
 Rigidbody2D:
   serializedVersion: 4
