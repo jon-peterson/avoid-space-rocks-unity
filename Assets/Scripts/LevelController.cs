@@ -261,7 +261,7 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(1.0f);
         for (int i = 0; i < _rocks; i++) {
             SpawnRock("RockBig",
-                Random.Range(0, 1) == 0 ? Util.GetRandomLocationTopEdge() : Util.GetRandomLocationLeftEdge());
+                Random.Range(0, 1) == 0 ? WorldSpaceUtil.GetRandomLocationTopEdge() : WorldSpaceUtil.GetRandomLocationLeftEdge());
         }
         _spawnAliensCoroutine = StartCoroutine(SpawnAliens());
     }

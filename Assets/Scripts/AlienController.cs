@@ -35,37 +35,37 @@ public class AlienController : MonoBehaviour
     }
 
     void Start() {
-        _levelController = Util.GetLevelController();
+        _levelController = WorldSpaceUtil.GetLevelController();
         // Start randomly on one of the four sides going to the opposite side
         int fourSidedCoinFlip = Random.Range(0, 3);
         switch (fourSidedCoinFlip) {
             case 0:
-                transform.position = Util.GetRandomLocationLeftEdge();
-                _destination = Util.GetRandomLocationRightEdge();
+                transform.position = WorldSpaceUtil.GetRandomLocationLeftEdge();
+                _destination = WorldSpaceUtil.GetRandomLocationRightEdge();
                 _secondDestination = _size == AlienSize.Small
-                    ? Util.GetRandomLocation()
-                    : Util.GetRandomLocationRightEdge();
+                    ? WorldSpaceUtil.GetRandomLocation()
+                    : WorldSpaceUtil.GetRandomLocationRightEdge();
                 break;
             case 1:
-                transform.position = Util.GetRandomLocationRightEdge();
-                _destination = Util.GetRandomLocationLeftEdge();
+                transform.position = WorldSpaceUtil.GetRandomLocationRightEdge();
+                _destination = WorldSpaceUtil.GetRandomLocationLeftEdge();
                 _secondDestination = _size == AlienSize.Small
-                    ? Util.GetRandomLocation()
-                    : Util.GetRandomLocationLeftEdge();
+                    ? WorldSpaceUtil.GetRandomLocation()
+                    : WorldSpaceUtil.GetRandomLocationLeftEdge();
                 break;
             case 2:
-                transform.position = Util.GetRandomLocationTopEdge();
-                _destination = Util.GetRandomLocationBottomEdge();
+                transform.position = WorldSpaceUtil.GetRandomLocationTopEdge();
+                _destination = WorldSpaceUtil.GetRandomLocationBottomEdge();
                 _secondDestination = _size == AlienSize.Small
-                    ? Util.GetRandomLocation()
-                    : Util.GetRandomLocationBottomEdge();
+                    ? WorldSpaceUtil.GetRandomLocation()
+                    : WorldSpaceUtil.GetRandomLocationBottomEdge();
                 break;
             default:
-                transform.position = Util.GetRandomLocationBottomEdge();
-                _destination = Util.GetRandomLocationTopEdge();
+                transform.position = WorldSpaceUtil.GetRandomLocationBottomEdge();
+                _destination = WorldSpaceUtil.GetRandomLocationTopEdge();
                 _secondDestination = _size == AlienSize.Small
-                    ? Util.GetRandomLocation()
-                    : Util.GetRandomLocationTopEdge();
+                    ? WorldSpaceUtil.GetRandomLocation()
+                    : WorldSpaceUtil.GetRandomLocationTopEdge();
                 break;
         }
 
@@ -84,7 +84,7 @@ public class AlienController : MonoBehaviour
     void Update()
     {
         // If this spaceship is near its destination, safe to kill it
-        if (Util.IsOutsideWorldspace(transform.position)) {
+        if (WorldSpaceUtil.IsOutsideWorldspace(transform.position)) {
             _levelController.OnAlienGone(this);
         }
     }

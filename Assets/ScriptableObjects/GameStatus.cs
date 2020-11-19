@@ -2,9 +2,9 @@
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/GameStatus", order = 1)]
 public class GameStatus : ScriptableObject {
-    [SerializeField] private int score;
-    [SerializeField] private int lives;
-    [SerializeField] private int level;
+    [SerializeField] private int score = default;
+    [SerializeField] private int lives = default;
+    [SerializeField] private int level = default;
 
     public int Score {
         get => score;

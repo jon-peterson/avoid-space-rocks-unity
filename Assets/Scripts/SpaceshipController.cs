@@ -36,7 +36,7 @@ public class SpaceshipController : MonoBehaviour {
     }
     
     void Start() {
-        _levelController = Util.GetLevelController();
+        _levelController = WorldSpaceUtil.GetLevelController();
         _audioFuelBurn = Resources.Load<AudioClip>("Audio/fuel_burn");
         _fuelBurning = false;
     }
@@ -104,7 +104,7 @@ public class SpaceshipController : MonoBehaviour {
         _pieces = GetSpaceshipPieces();
         _pieces.ForEach(piece => StartCoroutine(HyperspacePiece(piece)));
         // Move the spaceship somewhere in the world (but not at the very edge), not moving, pointing randomly
-        transform.position = Util.GetRandomLocation() * 0.9f;
+        transform.position = WorldSpaceUtil.GetRandomLocation() * 0.9f;
         transform.eulerAngles = new Vector3(0f, 0f, Random.Range(0, 360f));
         _rigidbody2D.velocity = Vector2.zero;
         // Stop all the various effects

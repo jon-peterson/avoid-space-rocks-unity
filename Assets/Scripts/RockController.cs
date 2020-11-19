@@ -15,7 +15,7 @@ public class RockController : MonoBehaviour
     public Size Size => size;
 
     void Start() {
-        _levelController = Util.GetLevelController();
+        _levelController = WorldSpaceUtil.GetLevelController();
     }
 
     /**

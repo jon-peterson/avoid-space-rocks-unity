@@ -20,7 +20,7 @@ public class BulletController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Destroy(gameObject, bulletLifetime);
-        _levelController = Util.GetLevelController();
+        _levelController = WorldSpaceUtil.GetLevelController();
     }
     
     void Awake() {        

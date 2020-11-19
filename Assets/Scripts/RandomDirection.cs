@@ -20,7 +20,7 @@ public class RandomDirection : MonoBehaviour
     void Start()
     {
         // Point the rock in a random direction and set it moving at a random speed
-        _rigidbody2D.velocity = Util.GetRandomVelocity(minSpeed, maxSpeed + SpeedBoost);
+        _rigidbody2D.velocity = WorldSpaceUtil.GetRandomVelocity(minSpeed, maxSpeed + SpeedBoost);
         // Give it an appropriate random rotation
         _rotationSpeed = Random.Range(minRotatePerSecond, maxRotatePerSecond);
     }

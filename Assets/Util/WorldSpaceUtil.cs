@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using Random = UnityEngine.Random;
 
-public class Util {
+public class WorldSpaceUtil {
 
     /**
      * Simple structure representing the limits of the world space

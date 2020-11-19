@@ -7,7 +7,7 @@ public class WraparoundMovement : MonoBehaviour {
     
     public void Update() {
         // Calculate the screen dimensions only once; they never change in this game
-        Util.WorldSpace world = Util.GetWorldSpace();
+        WorldSpaceUtil.WorldSpace world = WorldSpaceUtil.GetWorldSpace();
         if (world.Right > 0) {
             // Do the wraparound as needed
             Vector3 objectPosition = gameObject.transform.position;
