@@ -66,6 +66,9 @@ public class LevelController : MonoBehaviour {
         if (Input.GetKeyDown("2"))
             // Spawn a small alien ship
             SpawnAlienSmall();
+        if (Input.GetKeyDown("3"))
+            // Die
+            DestroySpaceship(GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceshipController>());
 #endif        
     }
 
