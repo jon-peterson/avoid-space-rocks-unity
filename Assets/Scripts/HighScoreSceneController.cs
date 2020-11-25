@@ -52,14 +52,31 @@ public class HighScoreSceneController : MonoBehaviour
      */
     private void SavePlayerScore() {
         PlayerScore score = new PlayerScore(_gameStatus, "1", "JEP");
+        PersistScoreToCollection("1", score);
+        PersistScoreToCollection("high-scores", score);
+    }
+
+    private void PersistScoreToCollection(string collectionName, PlayerScore score) {
         DynamoDBContext ddbContext = new DynamoDBContext(_client);
         DynamoDBOperationConfig cfg = new DynamoDBOperationConfig()
         {
             OverrideTableName = _gameTable
         };
-        ddbContext.SaveAsync(score, cfg, (result)=> {
-            Debug.Log(result.State);
-            Debug.Log(result.Exception.Message);
+        ddbContext.LoadAsync<PlayerScoreCollection>(collectionName, cfg, (loadResult) => {
+            if (loadResult.Exception != null) {
+                Debug.LogError("Failed to load player " + collectionName + "score: " + loadResult.Exception);
+                return;
+            }
+            PlayerScoreCollection collection = loadResult.Result;
+            if (collection == null) {
+                collection = new PlayerScoreCollection(collectionName);
+            }
+            collection.Add(score);
+            ddbContext.SaveAsync(collection, cfg, (saveResult)=> {
+                if (saveResult.Exception != null) {
+                    Debug.LogError("Failed to save player " + collectionName + "score: " + saveResult.Exception);
+                }
+            });
         });
     }
 

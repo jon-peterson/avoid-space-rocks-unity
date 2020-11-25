@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.Model;
 
-public class PlayerScore {
+public class PlayerScore : IComparable<PlayerScore> {
     [DynamoDBHashKey("UserId")] public string UserId { get; set; }
     [DynamoDBProperty] public string Player { get; set; }
     [DynamoDBProperty] public int Score { get; set; }
@@ -18,15 +17,33 @@ public class PlayerScore {
         Level = gameStatus.Level;
         Date = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ");
     }
-    
-    // public PlayerScore(Dictionary<String, AttributeValue> att) {
-    //     UserId = att["user-id"].S;
-    //     Player = att["player"].S;
-    //     Date = att["date"].S;
-    //     Score = Int32.Parse(att["score"].N);
-    //     Level = Int32.Parse(att["level"].N);
-    // }
 
+    // Sort them reverse order (highest first)
+    public int CompareTo(PlayerScore other) => other == null ? 1 : other.Score.CompareTo(Score);
+    
     // This constructor required for DynamoDb persistence layer
     public PlayerScore() {}
+}
+
+public class PlayerScoreCollection {
+    
+    [DynamoDBHashKey("UserId")] public string UserId { get; set; }
+    [DynamoDBProperty] public List<PlayerScore> Scores { get; set; }
+    private int _max;
+    
+    public PlayerScoreCollection(String uid) {
+        UserId = uid;
+        Scores = new List<PlayerScore>();
+        _max = 10;
+    }
+
+    public PlayerScoreCollection() : this("high-scores") { }
+
+    public void Add(PlayerScore score) {
+        Scores.Add(score);
+        Scores.Sort();
+        if (Scores.Count > _max) {
+            Scores.RemoveAt(_max);
+        }
+    }
 }
