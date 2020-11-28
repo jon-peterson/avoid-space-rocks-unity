@@ -1,15 +1,13 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using Amazon;
 using Amazon.CognitoIdentity;
 using Amazon.CognitoIdentity.Model;
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
-using Amazon.DynamoDBv2.DocumentModel;
-using Amazon.DynamoDBv2.Model;
 using Amazon.Runtime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,27 +31,28 @@ public class HighScoreSceneController : MonoBehaviour
         int score = _gameStatus.Score;
         _scoreText.text = score.ToString("#,##0");
         
-        // Save the score that the player just made
-        UnityInitializer.AttachToGameObject(this.gameObject);
-        AWSConfigs.HttpClient = AWSConfigs.HttpClientOption.UnityWebRequest;
+        // Prepare for AWS calls
         _credentials = new CognitoAWSCredentials(_identityPoolId, RegionEndpoint.USEast2);
-        
-        var identityClient = new AmazonCognitoIdentityClient(_credentials, RegionEndpoint.USEast2);
-        GetIdRequest request = new GetIdRequest();
-        request.IdentityPoolId = _identityPoolId;
-        identityClient.GetIdAsync(request, (result) => {
-            if (result.Exception == null) {
-                AmazonDynamoDBConfig ddbConfig = new AmazonDynamoDBConfig();
-                ddbConfig.RegionEndpoint = RegionEndpoint.USEast2;
-                _client = new AmazonDynamoDBClient(_credentials, ddbConfig);
-                SavePlayerScore(result.Response.IdentityId);
-            } else {
-                Debug.LogError("Failed to get Cognito identity: " + result.Exception);
-            }
-        });
+
+        string playerId = PlayerPrefs.GetString("cognitoId", null);
+        if (string.IsNullOrEmpty(playerId)) {
+            playerId = GetNewCognitoPlayerId();
+            Debug.Log("Cognito assigned identity: " + playerId);
+            PlayerPrefs.SetString("cognitoId", playerId);
+            PlayerPrefs.Save();
+        }
         
         // After five seconds go to the attract mode
         Invoke("ReturnToAttractMode", 5.0f);
+    }
+
+    private string GetNewCognitoPlayerId() {
+        Debug.Log("Calling Cognito for new Identity client ID");
+        var identityClient = new AmazonCognitoIdentityClient(_credentials, RegionEndpoint.USEast2);
+        GetIdRequest request = new GetIdRequest {IdentityPoolId = _identityPoolId};
+        Task<GetIdResponse> response = identityClient.GetIdAsync(request);
+        response.Wait();
+        return response.Result.IdentityId; 
     }
 
     /**
@@ -71,22 +70,22 @@ public class HighScoreSceneController : MonoBehaviour
         {
             OverrideTableName = _gameTable
         };
-        ddbContext.LoadAsync<PlayerScoreCollection>(collectionName, cfg, (loadResult) => {
-            if (loadResult.Exception != null) {
-                Debug.LogError("Failed to load player " + collectionName + "score: " + loadResult.Exception);
-                return;
-            }
-            PlayerScoreCollection collection = loadResult.Result;
-            if (collection == null) {
-                collection = new PlayerScoreCollection(collectionName);
-            }
-            collection.Add(score);
-            ddbContext.SaveAsync(collection, cfg, (saveResult)=> {
-                if (saveResult.Exception != null) {
-                    Debug.LogError("Failed to save player " + collectionName + "score: " + saveResult.Exception);
-                }
-            });
-        });
+        // ddbContext.LoadAsync<PlayerScoreCollection>(collectionName, cfg, (loadResult) => {
+        //     if (loadResult.Exception != null) {
+        //         Debug.LogError("Failed to load player " + collectionName + "score: " + loadResult.Exception);
+        //         return;
+        //     }
+        //     PlayerScoreCollection collection = loadResult.Result;
+        //     if (collection == null) {
+        //         collection = new PlayerScoreCollection(collectionName);
+        //     }
+        //     collection.Add(score);
+        //     ddbContext.SaveAsync(collection, cfg, (saveResult)=> {
+        //         if (saveResult.Exception != null) {
+        //             Debug.LogError("Failed to save player " + collectionName + "score: " + saveResult.Exception);
+        //         }
+        //     });
+        // });
     }
 
     void ReturnToAttractMode() {
