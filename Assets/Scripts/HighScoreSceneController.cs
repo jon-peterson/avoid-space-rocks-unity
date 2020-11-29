@@ -61,7 +61,8 @@ public class HighScoreSceneController : MonoBehaviour
      * Save the score info from the game status object to Dynamo for this player
      */
     private void SavePlayerScore(string playerId) {
-        PlayerScore score = new PlayerScore(_gameStatus, playerId, "JEP");
+        string name = PlayerPrefs.GetString("name", "???");
+        PlayerScore score = new PlayerScore(_gameStatus, playerId, name);
         PlayerScoreCollection playerScores = PersistScoreToCollection(playerId, score);
         PlayerScoreCollection highScores = PersistScoreToCollection("high-scores", score);
         Debug.Log("Got all tasks back");

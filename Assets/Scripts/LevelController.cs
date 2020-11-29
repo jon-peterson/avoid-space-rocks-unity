@@ -234,7 +234,14 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
-        SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
+        // Get the player's name if needed, or go right to the high score scene
+        string name = PlayerPrefs.GetString("name", null);
+        if (string.IsNullOrEmpty(name)) {
+            SceneManager.LoadScene("PlayerSettingsScene", LoadSceneMode.Single);
+        }
+        else {
+            SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
+        }
     }
 
     private void ShowCenterText(String c) {
