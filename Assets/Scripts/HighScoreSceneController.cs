@@ -18,15 +18,13 @@ public class HighScoreSceneController : MonoBehaviour
 
     private IAmazonDynamoDB _dynamoDBClient;
     private AWSCredentials _credentials;
-    private String _identityPoolId = "us-east-2:db7bd2f8-f47d-49d4-8adb-8011f1d1ca52";
-    private String _gameTable = "avoid-space-rocks-player-dev";
     
     void Start() {
         // Display the current high score
         DisplayScore("PlayerScore/FinalScore", _gameStatus.Score);
         
         // Prepare for AWS calls
-        _credentials = new CognitoAWSCredentials(_identityPoolId, RegionEndpoint.USEast2);
+        _credentials = new CognitoAWSCredentials(Constants.identityPoolId, RegionEndpoint.USEast2);
         _dynamoDBClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast2);
 
         // Save the player's score persistently and display it
@@ -53,7 +51,7 @@ public class HighScoreSceneController : MonoBehaviour
     private string GetNewCognitoPlayerId() {
         Debug.Log("Calling Cognito for new Identity client ID");
         var identityClient = new AmazonCognitoIdentityClient(_credentials, RegionEndpoint.USEast2);
-        GetIdRequest request = new GetIdRequest {IdentityPoolId = _identityPoolId};
+        GetIdRequest request = new GetIdRequest {IdentityPoolId = Constants.identityPoolId};
         Task<GetIdResponse> response = identityClient.GetIdAsync(request);
         response.Wait();
         return response.Result.IdentityId; 
@@ -76,9 +74,8 @@ public class HighScoreSceneController : MonoBehaviour
 
     private PlayerScoreCollection PersistScoreToCollection(string collectionName, PlayerScore ps) {
         DynamoDBContext ddbContext = new DynamoDBContext(_dynamoDBClient);
-        DynamoDBOperationConfig cfg = new DynamoDBOperationConfig()
-        {
-            OverrideTableName = _gameTable
+        DynamoDBOperationConfig cfg = new DynamoDBOperationConfig() {
+            OverrideTableName = Constants.gameTable
         };
         Task<PlayerScoreCollection> task = ddbContext.LoadAsync<PlayerScoreCollection>(collectionName, cfg);
         PlayerScoreCollection scores = task.Result;

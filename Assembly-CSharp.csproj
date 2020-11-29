@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\RockController.cs" />
      <Compile Include="Assets\Scripts\SpaceshipController.cs" />
      <Compile Include="Assets\Scripts\WraparoundMovement.cs" />
+     <Compile Include="Assets\Util\Constants.cs" />
      <Compile Include="Assets\Util\PlayerScore.cs" />
      <Compile Include="Assets\Util\WorldSpaceUtil.cs" />
      <None Include="Assets\Resources\awsconfig.xml" />
