@@ -39,6 +39,14 @@ public class PlayerScoreCollection {
 
     public PlayerScoreCollection() : this("high-scores") { }
 
+    // A score belongs in the collection if the collection isn't full or if it beats some existing score
+    public bool BelongsInCollection(PlayerScore candidate) {
+        if (Scores.Count < _max) {
+            return true;
+        }
+        return Scores.Exists(existing => candidate.Score > existing.Score);
+    }
+
     public void Add(PlayerScore score) {
         Scores.Add(score);
         Scores.Sort();

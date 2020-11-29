@@ -1,7 +1,5 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using System;
-using System.Runtime.InteropServices;
-using System.Threading;
 using System.Threading.Tasks;
 using Amazon;
 using Amazon.CognitoIdentity;
@@ -18,7 +16,6 @@ public class HighScoreSceneController : MonoBehaviour
 {
     [SerializeField] private GameStatus _gameStatus = default;
 
-    private Text _scoreText;
     private IAmazonDynamoDB _dynamoDBClient;
     private AWSCredentials _credentials;
     private String _identityPoolId = "us-east-2:db7bd2f8-f47d-49d4-8adb-8011f1d1ca52";
@@ -26,20 +23,18 @@ public class HighScoreSceneController : MonoBehaviour
     
     void Start() {
         // Display the current high score
-        GameObject canvas = GameObject.Find("Canvas");
-        _scoreText = canvas.transform.Find("PlayerScore/FinalScore").gameObject.GetComponent<Text>();
-        int score = _gameStatus.Score;
-        _scoreText.text = score.ToString("#,##0");
+        DisplayScore("PlayerScore/FinalScore", _gameStatus.Score);
         
         // Prepare for AWS calls
         _credentials = new CognitoAWSCredentials(_identityPoolId, RegionEndpoint.USEast2);
         _dynamoDBClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast2);
 
+        // Save the player's score persistently and display it
         string playerId = GetPlayerId();
         SavePlayerScore(playerId);
 
-        // After five seconds go to the attract mode
-        Invoke("ReturnToAttractMode", 5.0f);
+        // After seven seconds go to the attract mode
+        Invoke("ReturnToAttractMode", 7.0f);
     }
 
     // Returns the unique Player ID, asking Cognito for it if required. Persists to PlayerPrefs.
@@ -74,9 +69,12 @@ public class HighScoreSceneController : MonoBehaviour
         Debug.Log("Got all tasks back");
         Debug.Log("Best personal score: " + playerScores.Scores[0].Score);
         Debug.Log("Best overall score: " + highScores.Scores[0].Score);
+        DisplayScore("PlayerBestScore/BestScore", playerScores.Scores[0].Score);
+        DisplayScore("AllTimeHighScore/HighScore", highScores.Scores[0].Score);
+        DisplayWho("AllTimeHighScore/Who", highScores.Scores[0].Player);
     }
 
-    private PlayerScoreCollection PersistScoreToCollection(string collectionName, PlayerScore score) {
+    private PlayerScoreCollection PersistScoreToCollection(string collectionName, PlayerScore ps) {
         DynamoDBContext ddbContext = new DynamoDBContext(_dynamoDBClient);
         DynamoDBOperationConfig cfg = new DynamoDBOperationConfig()
         {
@@ -87,12 +85,25 @@ public class HighScoreSceneController : MonoBehaviour
         if (scores == null) {
             scores = new PlayerScoreCollection(collectionName);
         }
-        scores.Add(score);
-        Task save = ddbContext.SaveAsync(scores, cfg);
-        save.Wait();
+        if (scores.BelongsInCollection(ps)) {
+            scores.Add(ps);
+            ddbContext.SaveAsync(scores, cfg);
+        }
         return scores;
     }
 
+    private void DisplayScore(string componentName, int score) {
+        GameObject canvas = GameObject.Find("Canvas");
+        Text scoreText = canvas.transform.Find(componentName).gameObject.GetComponent<Text>();
+        scoreText.text = score.ToString("#,##0");
+    }
+
+    private void DisplayWho(string componentName, string who) {
+        GameObject canvas = GameObject.Find("Canvas");
+        Text t = canvas.transform.Find(componentName).gameObject.GetComponent<Text>();
+        t.text = who;
+    }
+    
     void ReturnToAttractMode() {
         SceneManager.LoadScene("AttractModeScene", LoadSceneMode.Single);
     }
