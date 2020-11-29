@@ -19,7 +19,7 @@ public class HighScoreSceneController : MonoBehaviour
     [SerializeField] private GameStatus _gameStatus = default;
 
     private Text _scoreText;
-    private IAmazonDynamoDB _client;
+    private IAmazonDynamoDB _dynamoDBClient;
     private AWSCredentials _credentials;
     private String _identityPoolId = "us-east-2:db7bd2f8-f47d-49d4-8adb-8011f1d1ca52";
     private String _gameTable = "avoid-space-rocks-player-dev";
@@ -33,7 +33,17 @@ public class HighScoreSceneController : MonoBehaviour
         
         // Prepare for AWS calls
         _credentials = new CognitoAWSCredentials(_identityPoolId, RegionEndpoint.USEast2);
+        _dynamoDBClient = new AmazonDynamoDBClient(_credentials, RegionEndpoint.USEast2);
 
+        string playerId = GetPlayerId();
+        SavePlayerScore(playerId);
+
+        // After five seconds go to the attract mode
+        Invoke("ReturnToAttractMode", 5.0f);
+    }
+
+    // Returns the unique Player ID, asking Cognito for it if required. Persists to PlayerPrefs.
+    private string GetPlayerId() {
         string playerId = PlayerPrefs.GetString("cognitoId", null);
         if (string.IsNullOrEmpty(playerId)) {
             playerId = GetNewCognitoPlayerId();
@@ -41,11 +51,10 @@ public class HighScoreSceneController : MonoBehaviour
             PlayerPrefs.SetString("cognitoId", playerId);
             PlayerPrefs.Save();
         }
-        
-        // After five seconds go to the attract mode
-        Invoke("ReturnToAttractMode", 5.0f);
+        return playerId;
     }
 
+    // Asks Cognito for a new unique ID for this player
     private string GetNewCognitoPlayerId() {
         Debug.Log("Calling Cognito for new Identity client ID");
         var identityClient = new AmazonCognitoIdentityClient(_credentials, RegionEndpoint.USEast2);
@@ -60,32 +69,28 @@ public class HighScoreSceneController : MonoBehaviour
      */
     private void SavePlayerScore(string playerId) {
         PlayerScore score = new PlayerScore(_gameStatus, playerId, "JEP");
-        PersistScoreToCollection(playerId, score);
-        PersistScoreToCollection("high-scores", score);
+        PlayerScoreCollection playerScores = PersistScoreToCollection(playerId, score);
+        PlayerScoreCollection highScores = PersistScoreToCollection("high-scores", score);
+        Debug.Log("Got all tasks back");
+        Debug.Log("Best personal score: " + playerScores.Scores[0].Score);
+        Debug.Log("Best overall score: " + highScores.Scores[0].Score);
     }
 
-    private void PersistScoreToCollection(string collectionName, PlayerScore score) {
-        DynamoDBContext ddbContext = new DynamoDBContext(_client);
+    private PlayerScoreCollection PersistScoreToCollection(string collectionName, PlayerScore score) {
+        DynamoDBContext ddbContext = new DynamoDBContext(_dynamoDBClient);
         DynamoDBOperationConfig cfg = new DynamoDBOperationConfig()
         {
             OverrideTableName = _gameTable
         };
-        // ddbContext.LoadAsync<PlayerScoreCollection>(collectionName, cfg, (loadResult) => {
-        //     if (loadResult.Exception != null) {
-        //         Debug.LogError("Failed to load player " + collectionName + "score: " + loadResult.Exception);
-        //         return;
-        //     }
-        //     PlayerScoreCollection collection = loadResult.Result;
-        //     if (collection == null) {
-        //         collection = new PlayerScoreCollection(collectionName);
-        //     }
-        //     collection.Add(score);
-        //     ddbContext.SaveAsync(collection, cfg, (saveResult)=> {
-        //         if (saveResult.Exception != null) {
-        //             Debug.LogError("Failed to save player " + collectionName + "score: " + saveResult.Exception);
-        //         }
-        //     });
-        // });
+        Task<PlayerScoreCollection> task = ddbContext.LoadAsync<PlayerScoreCollection>(collectionName, cfg);
+        PlayerScoreCollection scores = task.Result;
+        if (scores == null) {
+            scores = new PlayerScoreCollection(collectionName);
+        }
+        scores.Add(score);
+        Task save = ddbContext.SaveAsync(scores, cfg);
+        save.Wait();
+        return scores;
     }
 
     void ReturnToAttractMode() {
