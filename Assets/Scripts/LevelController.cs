@@ -1,8 +1,11 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -17,15 +20,18 @@ public class LevelController : MonoBehaviour {
     private Vector3 _screenDimensions;
     private AudioSource _audioSource;
     private Coroutine _spawnAliensCoroutine;
-
-    // The number of rocks currently in the playfield
-    private int _rocks;
+    
+    // A list of rocks in the playfield
+    private List<GameObject> _rocks;
     
     // The number of aliens currently in the playfield
     private int _aliens;
 
     // The number of aliens spawned during this level total
-    private int _aliensSpawned; 
+    private int _aliensSpawned;
+
+    // Is gameplay actually underway?
+    private bool _gameplayUnderway;
 
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private GameStatus _gameStatus;
@@ -35,6 +41,7 @@ public class LevelController : MonoBehaviour {
     }
     
     void Start() {
+        _gameplayUnderway = false;
         _gameStatus.Reset();
         _hudCanvas = GameObject.FindGameObjectWithTag("HUDCanvas").GetComponent<Canvas>();
         _scoreText = _hudCanvas.transform.Find("ScoreText").gameObject.GetComponent<Text>();
@@ -43,7 +50,7 @@ public class LevelController : MonoBehaviour {
         _centerTextUI = _hudCanvas.transform.Find("CenterText").gameObject;
         _centerTextUI.SetActive(false);
         _centerText = _centerTextUI.GetComponent<Text>(); 
-        // Start the spaceship right in the middle
+        // Start the spaceship and the level
         StartCoroutine(StartLevel());
         StartCoroutine(SpawnSpaceship(5.0f));
     }
@@ -69,6 +76,9 @@ public class LevelController : MonoBehaviour {
         if (Input.GetKeyDown("3"))
             // Die
             DestroySpaceship(GameObject.FindGameObjectWithTag("Player").GetComponent<SpaceshipController>());
+        if (Input.GetKeyDown("4"))
+            // Extra life
+            ExtraLife();
 #endif        
     }
 
@@ -130,14 +140,14 @@ public class LevelController : MonoBehaviour {
                 break;
         }
         Destroy(rock.gameObject);
-        _rocks--;
+        _rocks.Remove(rock.gameObject);
     }
 
     /**
      * Return true if we should start a new level
      */
     private bool ShouldStartNewLevel() {
-        return _rocks <= 0 && _aliens <= 0;
+        return _gameplayUnderway && _rocks.Count == 0 && _aliens <= 0;
     }
 
     /**
@@ -158,8 +168,9 @@ public class LevelController : MonoBehaviour {
     }
 
     private void ExtraLife() {
-        PlaySound("extra_life");
         _gameStatus.Lives += 1;
+        PlaySound("extra_life");
+        UpdateHUD();
     }
     
     /**
@@ -207,7 +218,6 @@ public class LevelController : MonoBehaviour {
     private void SpawnChildRocks(String prefab, int count, Vector3 pos) {
         for (int i = 0; i < count; i++) {
             SpawnRock(prefab, pos);
-            _rocks++;
         }
     }
     
@@ -215,10 +225,30 @@ public class LevelController : MonoBehaviour {
      * Creates a new spaceship in the middle of the screen
      */
     private IEnumerator SpawnSpaceship(float delay) {
+        // Wait for the specified time
         yield return new WaitForSeconds(delay);
+        // Wait up to ten seconds until there's no rock that is actually hitting the spaceship 
+        float waitNoMoreThan = 10.0f;
+        while (!IsSafeToSpawnSpaceship() && waitNoMoreThan > 0.0f) {
+            Debug.Log("Sleeping until safe to spawn: " + waitNoMoreThan);
+            waitNoMoreThan -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        // Create a new spaceship right in the middle of the screen
         SpaceshipController spaceship = Instantiate(Resources.Load<SpaceshipController>("Prefabs/Spaceship"));
         spaceship.transform.position = new Vector3(0f, 0f);
         spaceship.transform.eulerAngles = new Vector3(0f, 0f, 90f);
+    }
+
+    /**
+     * Returns true if the space at (0,0) doesn't have rocks right there which would cause an explosion 
+     */
+    private bool IsSafeToSpawnSpaceship() {
+        if (_rocks == null) {
+            return true;
+        }
+        Bounds spaceshipBounds = new Bounds(Vector3.zero, new Vector3(2f, 2f));
+        return !_rocks.Any(r => r.GetComponent<Collider2D>().bounds.Intersects(spaceshipBounds));
     }
 
     private void SpawnAlienBig() { 
@@ -243,11 +273,10 @@ public class LevelController : MonoBehaviour {
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
         // Get the player's name if needed, or go right to the high score scene
-        string name = PlayerPrefs.GetString("name", null);
-        if (string.IsNullOrEmpty(name)) {
+        string playerName = PlayerPrefs.GetString("name", null);
+        if (string.IsNullOrEmpty(playerName)) {
             SceneManager.LoadScene("PlayerSettingsScene", LoadSceneMode.Single);
-        }
-        else {
+        } else {
             SceneManager.LoadScene("HighScoreScene", LoadSceneMode.Single);
         }
     }
@@ -266,7 +295,8 @@ public class LevelController : MonoBehaviour {
      * Start new level by spawning the correct space rocks
      */
     private IEnumerator StartLevel() {
-        _rocks = (int)Math.Floor(_gameStatus.Level / 2.0f) + 2;
+        _gameplayUnderway = false;
+        int numRocks = (int)Math.Floor(_gameStatus.Level / 2.0f) + 2;
         _aliens = 0;
         _aliensSpawned = 0;
         if (_spawnAliensCoroutine != null) {
@@ -277,11 +307,16 @@ public class LevelController : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         HideCenterText();
         yield return new WaitForSeconds(1.0f);
-        for (int i = 0; i < _rocks; i++) {
+        // Spawn all the rocks
+        _rocks = new List<GameObject>();
+        for (int i = 0; i < numRocks; i++) {
             SpawnRock("RockBig",
                 Random.Range(0, 1) == 0 ? WorldSpaceUtil.GetRandomLocationTopEdge() : WorldSpaceUtil.GetRandomLocationLeftEdge());
         }
+        // Kick off aliens generation
         _spawnAliensCoroutine = StartCoroutine(SpawnAliens());
+        // We are definitely underway
+        _gameplayUnderway = true;
     }
 
     /**
@@ -309,6 +344,7 @@ public class LevelController : MonoBehaviour {
         GameObject rock = Instantiate(Resources.Load("Prefabs/" + type, typeof(GameObject))) as GameObject;
         rock.transform.position = position;
         rock.GetComponent<RandomDirection>().SpeedBoost = (_gameStatus.Level * 0.1f);
+        _rocks.Add(rock);
         return rock;
     }
 }        
