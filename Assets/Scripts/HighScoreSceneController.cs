@@ -10,9 +10,6 @@ public class HighScoreSceneController : MonoBehaviour
     private AwsUtil _aws;
     
     void Start() {
-        // Display the current high score
-        DisplayScore("PlayerScore/FinalScore", _gameStatus.Score);
-    
         // Save the player's score persistently and display it
         _aws = new AwsUtil();
         SavePlayerScore(_aws.GetPlayerId());
@@ -32,6 +29,7 @@ public class HighScoreSceneController : MonoBehaviour
         Debug.Log("Got all tasks back");
         Debug.Log("Best personal score: " + playerScores.Scores[0].Score);
         Debug.Log("Best overall score: " + highScores.Scores[0].Score);
+        DisplayScore("PlayerScore/FinalScore", _gameStatus.Score);
         DisplayScore("PlayerBestScore/BestScore", playerScores.Scores[0].Score);
         DisplayScore("AllTimeHighScore/HighScore", highScores.Scores[0].Score);
         DisplayWho("AllTimeHighScore/Who", highScores.Scores[0].Player);
