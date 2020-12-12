@@ -13,8 +13,10 @@ using UnityEngine.UI;
 
 public class AttractModeController : MonoBehaviour {
     private List<Transform> _textContainers;
+    private AwsUtil _aws;
 
     void Start() {
+        _aws = new AwsUtil();
         _textContainers = new List<Transform>();
         GameObject canvas = GameObject.Find("Canvas");
         _textContainers.Add(canvas.transform.Find("Title"));
@@ -45,13 +47,7 @@ public class AttractModeController : MonoBehaviour {
         Text scoresText = canvas.transform.Find("HighScores/Scores").gameObject.GetComponent<Text>();
         scoresText.text = "";
         // Fetch the high scores from AWS
-        CognitoAWSCredentials credentials = new CognitoAWSCredentials(Constants.identityPoolId, RegionEndpoint.USEast2);
-        AmazonDynamoDBClient client = new AmazonDynamoDBClient(credentials, RegionEndpoint.USEast2);
-        DynamoDBContext ddbContext = new DynamoDBContext(client);
-        DynamoDBOperationConfig cfg = new DynamoDBOperationConfig() {
-            OverrideTableName = Constants.gameTable
-        };
-        PlayerScoreCollection highScores = ddbContext.LoadAsync<PlayerScoreCollection>("high-scores", cfg).Result;
+        PlayerScoreCollection highScores = _aws.GetPlayerScoreCollection("high-scores");
         // Build up the list of players and scores
         string players = "", scores = "";
         foreach(PlayerScore score in highScores.Scores) {
