@@ -52,7 +52,7 @@ public class AttractModeController : MonoBehaviour {
         string players = "", scores = "";
         foreach(PlayerScore score in highScores.Scores) {
             players += score.Player + "\n";
-            scores += score.Score + "\n";
+            scores += score.Score.ToString("#,##0") + "\n";
         }
         playersText.text = players;
         scoresText.text = scores;
