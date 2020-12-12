@@ -152,10 +152,14 @@ public class LevelController : MonoBehaviour {
         int pointsForNewLife = (nextRewardLevel * _gameConfig.Points.forNewLife);
         _gameStatus.Score += points;
         if (_gameStatus.Score >= pointsForNewLife) {
-            PlaySound("extra_life");
-            _gameStatus.Lives += 1;
+            Invoke(nameof(ExtraLife), 0.5f);
         }
         UpdateHUD();
+    }
+
+    private void ExtraLife() {
+        PlaySound("extra_life");
+        _gameStatus.Lives += 1;
     }
     
     /**
