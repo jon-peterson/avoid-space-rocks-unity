@@ -144,6 +144,10 @@ public class LevelController : MonoBehaviour {
      * Increases the player's score. Gives extra life if appropriate.
      */
     private void ScorePoints(int points) {
+        if (_gameStatus.Lives == 0) {
+            // You can't score points when you have lost the game
+            return;
+        }
         int nextRewardLevel = (int) Math.Floor((double) _gameStatus.Score / _gameConfig.Points.forNewLife) + 1;
         int pointsForNewLife = (nextRewardLevel * _gameConfig.Points.forNewLife);
         _gameStatus.Score += points;
