@@ -114,6 +114,9 @@ public class LevelController : MonoBehaviour {
      * Destroy the passed-in rock, spawning new smaller ones as needed. Increases score.
      */
     public void DestroyRock(RockController rock) {
+        // Spit out some random shrapnel that will go away
+        rock.GetShrapnel().ForEach(piece => Destroy(piece, Random.Range(0.25f, 1.0f)));
+        
         int pieces = (int)Math.Floor(_gameStatus.Level / 4.0f) + 2;
         switch (rock.Size) {
             case Size.Large:

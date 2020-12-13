@@ -1,8 +1,13 @@
 ﻿// Copyright 2020 Ideograph LLC. All rights reserved.
+
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum Size {
-    Large, Medium, Small, Tiny
+    Large,
+    Medium,
+    Small,
+    Tiny
 }
 
 [RequireComponent(typeof(RandomDirection))]
@@ -34,4 +39,17 @@ public class RockController : MonoBehaviour
         }
     }
 
+    /**
+     * Returns a list of shrapnel from the explosion
+     */
+    public List<GameObject> GetShrapnel() {
+        List<GameObject> pieces = new List<GameObject>();
+        for (int i = 0; i < Random.Range(3, 10); i++) {
+            GameObject piece = Instantiate(Resources.Load<GameObject>("Prefabs/shrapnel"));
+            piece.transform.position = gameObject.transform.position;
+            piece.transform.localScale = new Vector3(Random.Range(0.5f, 1.2f), Random.Range(0.5f, 1.2f), 1.0f);
+            pieces.Add(piece);
+        }
+        return pieces;
+    }
 }
