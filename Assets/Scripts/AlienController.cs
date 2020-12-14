@@ -37,7 +37,7 @@ public class AlienController : MonoBehaviour
     void Start() {
         _levelController = WorldSpaceUtil.GetLevelController();
         // Start randomly on one of the four sides going to the opposite side
-        int fourSidedCoinFlip = Random.Range(0, 3);
+        int fourSidedCoinFlip = Random.Range(0, 4);
         switch (fourSidedCoinFlip) {
             case 0:
                 transform.position = WorldSpaceUtil.GetRandomLocationLeftEdge();

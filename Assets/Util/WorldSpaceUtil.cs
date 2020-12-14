@@ -75,7 +75,7 @@ public class WorldSpaceUtil {
      * Returns a random location along one of the sides of the worldspace
      */
     public static Vector2 GetRandomEdgeLocation() {
-        return Random.Range(0, 1) == 0
+        return Random.Range(0, 2) == 0
             ? WorldSpaceUtil.GetRandomLocationTopEdge()
             : WorldSpaceUtil.GetRandomLocationLeftEdge();
     }
