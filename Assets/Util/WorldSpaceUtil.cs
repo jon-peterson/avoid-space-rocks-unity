@@ -71,6 +71,15 @@ public class WorldSpaceUtil {
         return new Vector2(Random.Range(world.Left, world.Right), Random.Range(world.Bottom, world.Top));
     }
 
+    /**
+     * Returns a random location along one of the sides of the worldspace
+     */
+    public static Vector2 GetRandomEdgeLocation() {
+        return Random.Range(0, 1) == 0
+            ? WorldSpaceUtil.GetRandomLocationTopEdge()
+            : WorldSpaceUtil.GetRandomLocationLeftEdge();
+    }
+    
     public static Vector2 GetRandomLocationTopEdge() {
         WorldSpace world = GetWorldSpace();
         return new Vector2(Random.Range(world.Left, world.Right), world.Top);

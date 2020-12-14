@@ -313,8 +313,7 @@ public class LevelController : MonoBehaviour {
         // Spawn all the rocks
         _rocks = new List<GameObject>();
         for (int i = 0; i < numRocks; i++) {
-            SpawnRock("RockBig",
-                Random.Range(0, 1) == 0 ? WorldSpaceUtil.GetRandomLocationTopEdge() : WorldSpaceUtil.GetRandomLocationLeftEdge());
+            SpawnRock("RockBig", WorldSpaceUtil.GetRandomEdgeLocation());
         }
         // Kick off aliens generation
         _spawnAliensCoroutine = StartCoroutine(SpawnAliens());

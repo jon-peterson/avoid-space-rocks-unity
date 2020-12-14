@@ -2,6 +2,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Amazon;
 using Amazon.CognitoIdentity;
@@ -17,13 +18,31 @@ public class AttractModeController : MonoBehaviour {
 
     void Start() {
         _aws = new AwsUtil();
+        // Create a list of text titles to cycle through
         _textContainers = new List<Transform>();
         GameObject canvas = GameObject.Find("Canvas");
         _textContainers.Add(canvas.transform.Find("Title"));
         _textContainers.Add(canvas.transform.Find("Instructions"));
         _textContainers.Add(canvas.transform.Find("HighScores"));
         _textContainers.Add(canvas.transform.Find("KeyBindings"));
-        StartCoroutine(CycleThroughTitles());
+        // Add some rocks for background and start the titles
+        StartCoroutine(nameof(CycleThroughTitles));
+        Invoke(nameof(AddRocks), 1.0f);
+    }
+
+    private void AddRocks() {
+        foreach (var i in Enumerable.Range(0, 3)) {
+            AddRock("RockBig");
+            AddRock("RockMedium");
+        }
+    }
+
+    private void AddRock(string type) {
+        RockController rock = Instantiate(Resources.Load<RockController>("Prefabs/" + type));
+        rock.transform.position = WorldSpaceUtil.GetRandomEdgeLocation();
+        Color c = rock.GetComponent<SpriteRenderer>().color;
+        c.a = 0.3f; // slightly transparent
+        rock.GetComponent<SpriteRenderer>().color = c;
     }
 
     private IEnumerator CycleThroughTitles() {
@@ -39,7 +58,7 @@ public class AttractModeController : MonoBehaviour {
     }
 
     // Get the latest high scores from Dynamo and display them in the high scores fields
-    void UpdateHighScores() {
+    private void UpdateHighScores() {
         // First zero out the existing players and scores
         GameObject canvas = GameObject.Find("Canvas");
         Text playersText = canvas.transform.Find("HighScores/Players").gameObject.GetComponent<Text>();
@@ -60,6 +79,10 @@ public class AttractModeController : MonoBehaviour {
 
     // Start new game on any key
     void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+            return;
+        }
         if (Input.anyKeyDown) {
             SceneManager.LoadScene("PlayfieldScene", LoadSceneMode.Single);
         }
